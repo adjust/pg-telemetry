@@ -351,7 +351,7 @@ $$ set search_path from current;
 select wal_telemetry();
 
 comment on function wal_telemetry() is $$
-The wal_telemetry(0 function checks the current wal location and compares
+The wal_telemetry() function checks the current wal location and compares
 with the last entry in the pg_telemetry_wal_log.  It then provides for you
 both current and last data, and the differences between them.  These include
 bytes elapsed and seconds elapsed, and bytes per sec.
