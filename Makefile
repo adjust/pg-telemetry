@@ -1,5 +1,5 @@
 EXTENSION = pgtelemetry
-DATA = pgtelemetry--0.1.sql
+DATA = extension/*
 
 PG_CONFIG = pg_config
 PGXS := $(shell $(PG_CONFIG) --pgxs)

@@ -1,0 +1,3832 @@
+<!-- $Header: /cvsroot/autodoc/autodoc/html.tmpl,v 1.4 2006/05/16 19:01:27 rbt Exp $ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>Index for extest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+	BODY {
+		color:	#000000;
+		background-color: #FFFFFF;
+		font-family: Helvetica, sans-serif;
+	}
+
+	P {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+	P.w3ref {
+		font-size: 8pt;
+		font-style: italic;
+		text-align: right;
+	}
+
+	P.detail {
+		font-size: 10pt;
+	}
+
+	.error {
+		color: #FFFFFF;
+		background-color: #FF0000;
+	}
+
+	H1, H2, H3, H4, H5, H6 {
+	}
+
+	OL {
+		list-style-type: upper-alpha;
+	}
+
+	UL.topic {
+		list-style-type: upper-alpha;
+	}
+
+	LI.topic {
+		font-weight : bold;
+	}
+
+	HR {
+		color: #00FF00;
+		background-color: #808080;
+	}
+
+	TABLE {
+		border-width: medium;
+		padding: 3px;
+		background-color: #000000;
+		width: 90%;
+	}
+
+	CAPTION {
+		text-transform: capitalize;
+		font-weight : bold;
+		font-size: 14pt;
+	}
+
+	TH {
+		color: #FFFFFF;
+		background-color: #000000;
+		text-align: left;
+	}
+
+	TR {
+		color: #000000;
+		background-color: #000000;
+		vertical-align: top;
+	}
+
+	TR.tr0 {
+		background-color: #F0F0F0;
+	}
+
+	TR.tr1 {
+		background-color: #D8D8D8;
+	}
+
+	TD {
+		font-size: 12pt;
+	}
+
+	TD.col0 {
+		font-weight : bold;
+		width: 20%;
+	}
+
+	TD.col1 {
+		font-style: italic;
+		width: 15%;
+	}
+
+	TD.col2 {
+		font-size: 12px;
+	}
+    </style>
+    <link rel="stylesheet" type="text/css" media="all" href="all.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="screen.css">
+    <link rel="stylesheet" type="text/css" media="print" href="print.css">
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  </head>
+  <body>
+
+    <!-- Primary Index -->
+	<p><br><br>Dumped on 2017-08-03</p>
+<h1><a name="index">Index of database - extest</a></h1>
+<ul>
+    
+    <li><a name="pgtelemetry.schema">pgtelemetry</a></li><ul>
+    	<li><a href="#pgtelemetry.view.autovacuum-stats">autovacuum_stats</a></li><li><a href="#pgtelemetry.view.catalog-total-size">catalog_total_size</a></li><li><a href="#pgtelemetry.view.connections-by-application">connections_by_application</a></li><li><a href="#pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a></li><li><a href="#pgtelemetry.view.connections-by-state">connections_by_state</a></li><li><a href="#pgtelemetry.view.database-size">database_size</a></li><li><a href="#pgtelemetry.view.index-size">index_size</a></li><li><a href="#pgtelemetry.view.locks-by-mode">locks_by_mode</a></li><li><a href="#pgtelemetry.view.locks-by-type">locks_by_type</a></li><li><a href="#pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a></li><li><a href="#pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a></li><li><a href="#pgtelemetry.view.relation-toast-size">relation_toast_size</a></li><li><a href="#pgtelemetry.view.relation-total-size">relation_total_size</a></li><li><a href="#pgtelemetry.view.replication-slot-lag">replication_slot_lag</a></li><li><a href="#pgtelemetry.view.statement-query-buffers">statement_query_buffers</a></li><li><a href="#pgtelemetry.view.statement-query-by-id">statement_query_by_id</a></li><li><a href="#pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a></li><li><a href="#pgtelemetry.view.tablespace-size">tablespace_size</a></li><li><a href="#pgtelemetry.view.tuple-access-stats">tuple_access_stats</a></li><li><a href="#pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a></li>
+  	<li><a href="#pgtelemetry.function.wal-telemetry">wal_telemetry()</a></li>
+    </ul>
+    
+    <li><a name="public.schema">public</a></li><ul>
+    	<li><a href="#public.view.pg-stat-statements">pg_stat_statements</a></li>
+  	<li><a href="#public.function.pg-stat-statements-showtext-boolean">pg_stat_statements(showtext boolean)</a></li><li><a href="#public.function.pg-stat-statements-reset">pg_stat_statements_reset()</a></li>
+    </ul>
+    
+</ul>
+
+    <!-- Schema Creation -->
+    <!-- pgtelemetrypgtelemetry -->
+
+		
+		<hr>
+		<h1>Schema pgtelemetry</h1>
+		
+
+		
+		
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.autovacuum-stats">autovacuum_stats</a>
+		</h2>
+        
+         <p>
+This provides basic metrics per table in the current database for when 
+autovacuum and analyze were last run (as well as manual maintenance).
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.autovacuum_stats Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>schemaname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>relname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>last_vacuum</td>
+            	<td>timestamp with time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>age_last_vacuum</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>vacuum_count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>last_autovacuum</td>
+            	<td>timestamp with time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>age_last_autovacuum</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>autovacuum_count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>last_analyze</td>
+            	<td>timestamp with time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>age_last_analyze</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>analyze_count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>last_autoanalyze</td>
+            	<td>timestamp with time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>age_last_autoanalyze</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>autoanalyze_count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_user_tables.schemaname
+,
+    pg_stat_user_tables.relname
+,
+    pg_stat_user_tables.last_vacuum
+,
+    date_part
+(&#39;epoch&#39;::text
+     , age
+     (now
+           ()
+           , pg_stat_user_tables.last_vacuum
+     )
+) AS age_last_vacuum
+,
+    pg_stat_user_tables.vacuum_count
+,
+    pg_stat_user_tables.last_autovacuum
+,
+    date_part
+(&#39;epoch&#39;::text
+     , age
+     (now
+           ()
+           , pg_stat_user_tables.last_autovacuum
+     )
+) AS age_last_autovacuum
+,
+    pg_stat_user_tables.autovacuum_count
+,
+    pg_stat_user_tables.last_analyze
+,
+    date_part
+(&#39;epoch&#39;::text
+     , age
+     (now
+           ()
+           , pg_stat_user_tables.last_analyze
+     )
+) AS age_last_analyze
+,
+    pg_stat_user_tables.analyze_count
+,
+    pg_stat_user_tables.last_autoanalyze
+,
+    date_part
+(&#39;epoch&#39;::text
+     , age
+     (now
+           ()
+           , pg_stat_user_tables.last_autoanalyze
+     )
+) AS age_last_autoanalyze
+,
+    pg_stat_user_tables.autoanalyze_count
+   
+FROM pg_stat_user_tables;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.catalog-total-size">catalog_total_size</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.catalog_total_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>oid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>relation</td>
+            	<td>regclass</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>inclusive_bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>inclusive_size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>exclusive_bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>exclusive_size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT c.oid
+,
+    
+(c.oid)::regclass AS relation
+,
+    pg_total_relation_size
+(
+     (c.oid)::regclass
+) AS inclusive_bytes
+,
+    pg_size_pretty
+(pg_total_relation_size
+     (
+           (c.oid)::regclass
+     )
+) AS inclusive_size
+,
+    pg_relation_size
+(
+     (c.oid)::regclass
+) AS exclusive_bytes
+,
+    pg_size_pretty
+(pg_relation_size
+     (
+           (c.oid)::regclass
+     )
+) AS exclusive_size
+   
+FROM (pg_class c
+     
+  JOIN pg_namespace n 
+    ON (
+           (c.relnamespace = n.oid)
+     )
+)
+  
+WHERE (
+     (c.relkind = &#39;r&#39;::&quot;char&quot;)
+   AND (n.nspname = ANY 
+           (ARRAY[&#39;pg_catalog&#39;::name
+                 ,&#39;information_schema&#39;::name]
+           )
+     )
+);</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-application">connections_by_application</a>
+		</h2>
+        
+         <p>
+This gives you the number of connections (cluster-wide) by application name.
+
+By default the application name is the program name that connected to the db.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.connections_by_application Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>application_name</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_activity.application_name
+,
+    count
+(*) AS count
+   
+FROM pg_stat_activity
+  
+GROUP BY pg_stat_activity.application_name;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a>
+		</h2>
+        
+         <p>
+This is a cluster-wide breakdown of connections by IP source.  Between this and
+the applicaiton_name it is a good indication of where server laod is coming from
+as well as porblems like connection handle leaks.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.connections_by_ip_source Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>client_addr</td>
+            	<td>inet</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_activity.client_addr
+,
+    count
+(*) AS count
+   
+FROM pg_stat_activity
+  
+GROUP BY pg_stat_activity.client_addr;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-state">connections_by_state</a>
+		</h2>
+        
+         <p>
+This gives you the number of connections (cluster-wide) by state (active, idle, 
+idle in transaction, etc).  If the query is active but is waiting on a lock or
+latch, we change this to &#39;waiting.&#39;
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.connections_by_state Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>state</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT
+        CASE
+            WHEN 
+(pg_stat_activity.wait_event IS NULL) THEN pg_stat_activity.state
+            ELSE &#39;waiting&#39;::text
+        END AS state
+,
+    count
+(*) AS count
+   
+FROM pg_stat_activity
+  
+GROUP BY
+        CASE
+            WHEN 
+(pg_stat_activity.wait_event IS NULL) THEN pg_stat_activity.state
+            ELSE &#39;waiting&#39;::text
+        END;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.database-size">database_size</a>
+		</h2>
+        
+         <p>
+This provides cluser-wide size statistics of databases.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.database_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>name</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_database.datname AS name
+,
+    pg_database_size
+(pg_database.oid) AS bytes
+,
+    pg_size_pretty
+(pg_database_size
+     (pg_database.oid)
+) AS size
+   
+FROM pg_database;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.index-size">index_size</a>
+		</h2>
+        
+         <p>
+This table is most useful in tracking down questions of bloat, fill factor, and
+performance of GIN indexes among other things.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.index_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>oid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>index</td>
+            	<td>regclass</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT c.oid
+,
+    
+(c.oid)::regclass AS index
+,
+    pg_relation_size
+(
+     (c.oid)::regclass
+) AS bytes
+,
+    pg_size_pretty
+(pg_relation_size
+     (
+           (c.oid)::regclass
+     )
+) AS size
+   
+FROM (pg_class c
+     
+  JOIN pg_namespace n 
+    ON (
+           (c.relnamespace = n.oid)
+     )
+)
+  
+WHERE (
+     (c.relkind = &#39;i&#39;::&quot;char&quot;)
+   AND (n.nspname &lt;&gt; ALL 
+           (ARRAY[&#39;pg_toast&#39;::name
+                 ,&#39;pg_catalog&#39;::name
+                 ,&#39;information_schema&#39;::name]
+           )
+     )
+);</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.locks-by-mode">locks_by_mode</a>
+		</h2>
+        
+         <p>
+This view provides cluster-wide statistics on locks by lock mode (access share
+vs exclusive for example).  Combined with the locks_by_type view, this view 
+provides a some opportunities to spot locking problems.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.locks_by_mode Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>mode</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_locks.mode
+,
+    count
+(*) AS count
+   
+FROM pg_locks
+  
+GROUP BY pg_locks.mode;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.locks-by-type">locks_by_type</a>
+		</h2>
+        
+         <p>
+This view provides cluster-wide statistics on what sorts of locks are present.
+
+These incude advisory locks, relation, tuple, transaction id, etc.  This can be
+helpful in determining where the locks are coming from.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.locks_by_type Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>locktype</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_locks.locktype
+,
+    count
+(*) AS count
+   
+FROM pg_locks
+  
+GROUP BY pg_locks.locktype;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a>
+		</h2>
+        
+         <p>
+This view is intended to be typically used by administrators in determining
+which queries to focus on.  However it can be used for reporting and alerting
+as well.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.longest_running_active_queries Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>application_name</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>state</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>wait_event_type</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>wait_event</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>query</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>pid</td>
+            	<td>integer</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>client_addr</td>
+            	<td>inet</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>running_for</td>
+            	<td>interval</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_activity.application_name
+,
+    pg_stat_activity.state
+,
+    pg_stat_activity.wait_event_type
+,
+    pg_stat_activity.wait_event
+,
+    pg_stat_activity.query
+,
+    pg_stat_activity.pid
+,
+    pg_stat_activity.client_addr
+,
+    age
+(now
+     ()
+     , pg_stat_activity.query_start
+) AS running_for
+   
+FROM pg_stat_activity
+  
+WHERE (pg_stat_activity.state = &#39;active&#39;::text)
+  
+ORDER BY (age
+     (now
+           ()
+           , pg_stat_activity.query_start
+     )
+) DESC;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>Table:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a>
+		</h2>
+        
+         <p>
+This table logs the times and results of wal telemetry readings so that
+deltas can be calculated.  At least one row must be present to get any useful
+data out of the wal_telemetry() function at all.
+
+If you get one telemetry entry a minute, over the course of a year you will get
+just over half a million entries.  These are indexed on both epoch and timestamp
+so access is not impaired, but if you want ot purge, be careful to leave at
+least one entry at the end.
+
+You can also process these as a time series using WINDOW functions like lag.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.pg_telemetry_wal_log Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>run_time</td>
+            	<td>numeric</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE
+                    
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                  
+                
+                </td>
+            	<td>timestamp</td>
+            	<td>timestamp without time zone</td>
+                <td><i>
+				
+					
+
+					
+                       UNIQUE
+                    
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>lsn</td>
+            	<td>pg_lsn</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+		
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.relation-toast-size">relation_toast_size</a>
+		</h2>
+        
+         <p>
+This measures the amount of space in a relation&#39;s TOAST tables.  These are 
+populated when data exceeds what can be reasonably stored inline in the main
+heap pages.  You would expect to see this non-zero where you have large fields
+being stored, particularly arrays of composite types.
+
+Performance-wise moving data to TOAST improves sequential scans where the data
+is not required (count(*) for example) at the cost of making the data that has 
+been moved far more expensive to retrieve and process.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.relation_toast_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>oid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>relation</td>
+            	<td>regclass</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>exclusive_bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>exclusive_size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT c.oid
+,
+    
+(c.oid)::regclass AS relation
+,
+    pg_relation_size
+(
+     (t.oid)::regclass
+) AS exclusive_bytes
+,
+    pg_size_pretty
+(pg_relation_size
+     (
+           (t.oid)::regclass
+     )
+) AS exclusive_size
+   
+FROM (
+     (pg_class c
+     
+        JOIN pg_class t 
+          ON (
+                 (
+                       (t.relname)::text = 
+                       (&#39;pg_toast_&#39;::text || 
+                             (c.oid)::text
+                       )
+                 )
+           )
+     )
+     
+  JOIN pg_namespace n 
+    ON (
+           (c.relnamespace = n.oid)
+     )
+);</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.relation-total-size">relation_total_size</a>
+		</h2>
+        
+         <p>
+This view provides basic information on relation size in PostgreSQL system
+tables (those in pg_catalog and information_schema).
+
+The inclusive metrics show the relation along with indexes and TOAST.  The 
+exclusiove metrics show without these things.  The bytes metrics are intended
+for graph drawing, while the sizes are there for administrators who want to
+quickly query this information and make decisions.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.relation_total_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>oid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>relation</td>
+            	<td>regclass</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>inclusive_bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>inclusive_size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>exclusive_bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>exclusive_size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT c.oid
+,
+    
+(c.oid)::regclass AS relation
+,
+    pg_total_relation_size
+(
+     (c.oid)::regclass
+) AS inclusive_bytes
+,
+    pg_size_pretty
+(pg_total_relation_size
+     (
+           (c.oid)::regclass
+     )
+) AS inclusive_size
+,
+    pg_relation_size
+(
+     (c.oid)::regclass
+) AS exclusive_bytes
+,
+    pg_size_pretty
+(pg_relation_size
+     (
+           (c.oid)::regclass
+     )
+) AS exclusive_size
+   
+FROM (pg_class c
+     
+  JOIN pg_namespace n 
+    ON (
+           (c.relnamespace = n.oid)
+     )
+)
+  
+WHERE (
+     (c.relkind = &#39;r&#39;::&quot;char&quot;)
+   AND (n.nspname &lt;&gt; ALL 
+           (ARRAY[&#39;pg_toast&#39;::name
+                 ,&#39;pg_catalog&#39;::name
+                 ,&#39;information_schema&#39;::name]
+           )
+     )
+);</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.replication-slot-lag">replication_slot_lag</a>
+		</h2>
+        
+         <p>
+This view monitors lag on downstream slots.  It compares the last sent wal 
+segment to the current known wal location.
+
+For master database, the current wal location is self-explanatory.  For replicas
+we use the last received WAL location instead.  Note that replicas can have 
+replication slots for downstream replication tracking.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.replication_slot_lag Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>slot_name</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>slot_type</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>active</td>
+            	<td>boolean</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>restart_lsn</td>
+            	<td>pg_lsn</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>full_data</td>
+            	<td>jsonb</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>querytime</td>
+            	<td>timestamp with time zone</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>pg_current_xlog_location</td>
+            	<td>pg_lsn</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>current_lag_bytes</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT s.slot_name
+,
+    s.slot_type
+,
+    s.active
+,
+    s.restart_lsn
+,
+    to_jsonb
+(s.*) AS full_data
+,
+    now
+() AS querytime
+,
+        CASE
+            WHEN pg_is_in_recovery
+() THEN pg_last_xlog_replay_location
+()
+            ELSE pg_current_xlog_location
+()
+        END AS pg_current_xlog_location
+,
+        CASE
+            WHEN pg_is_in_recovery
+() THEN 
+(NULL::integer)::numeric
+            ELSE 
+(pg_current_xlog_location
+     () - s.restart_lsn
+)
+        END AS current_lag_bytes
+   
+FROM pg_replication_slots s
+  
+ORDER BY s.slot_name;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-buffers">statement_query_buffers</a>
+		</h2>
+        
+         <p>
+This gives aggregated of stats for a given query (cluster-wide)
+per query and database name.  This view provides low-level IO statistics.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.statement_query_buffers Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>datname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>queryid</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>sum</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>shared_blks_hit</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>shared_blks_read</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>shared_blks_dirtied</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>shared_blks_written</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>tmp_blkd_read</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>tmp_blkd_written</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT d.datname
+,
+    pg_stat_statements.queryid
+,
+    sum
+(pg_stat_statements.calls) AS sum
+,
+    sum
+(pg_stat_statements.shared_blks_hit) AS shared_blks_hit
+,
+    sum
+(pg_stat_statements.shared_blks_read) AS shared_blks_read
+,
+    sum
+(pg_stat_statements.shared_blks_dirtied) AS shared_blks_dirtied
+,
+    sum
+(pg_stat_statements.shared_blks_written) AS shared_blks_written
+,
+    sum
+(pg_stat_statements.temp_blks_read) AS tmp_blkd_read
+,
+    sum
+(pg_stat_statements.temp_blks_written) AS tmp_blkd_written
+   
+FROM (pg_stat_statements
+     
+  JOIN pg_database d 
+    ON (
+           (d.oid = pg_stat_statements.dbid)
+     )
+)
+  
+GROUP BY d.datname
+, pg_stat_statements.queryid;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-by-id">statement_query_by_id</a>
+		</h2>
+        
+         <p>
+This provides the query text for a given statement id.
+
+A major reason to break this off is actually usability.  When troubleshooting
+very often we want to see the numbers first, and having long text fields gets
+in the way.  However in addition this means you can turn on statement text only
+while querying this view and turn it off for the others.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.statement_query_by_id Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>queryid</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>query</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_statements.queryid
+,
+    pg_stat_statements.query
+   
+FROM pg_stat_statements
+  
+GROUP BY pg_stat_statements.queryid
+, pg_stat_statements.query;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a>
+		</h2>
+        
+         <p>
+This gives aggregated of stats for a given query (cluster-wide)
+per query and database name.  This view provides high level timing and row
+statistics.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.statement_query_rows_time Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>datname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>queryid</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>calls</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>total_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>rows</td>
+            	<td>numeric</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT d.datname
+,
+    pg_stat_statements.queryid
+,
+    sum
+(pg_stat_statements.calls) AS calls
+,
+    sum
+(pg_stat_statements.total_time) AS total_time
+,
+    sum
+(pg_stat_statements.rows) AS rows
+   
+FROM (pg_stat_statements
+     
+  JOIN pg_database d 
+    ON (
+           (d.oid = pg_stat_statements.dbid)
+     )
+)
+  
+GROUP BY d.datname
+, pg_stat_statements.queryid;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.tablespace-size">tablespace_size</a>
+		</h2>
+        
+         <p>
+This provides database-cluster-wide statistics on disk usage by tablespace.
+
+Note that tablespaces and databases are orthogonal.  Typically if you are 
+running out of disk space, you want to check this one first, then database_size
+and then the size of the relations in the largest database in that order.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.tablespace_size Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>name</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>bytes</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>size</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_tablespace.spcname AS name
+,
+    pg_tablespace_size
+(pg_tablespace.oid) AS bytes
+,
+    pg_size_pretty
+(pg_tablespace_size
+     (pg_tablespace.oid)
+) AS size
+   
+FROM pg_tablespace;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.tuple-access-stats">tuple_access_stats</a>
+		</h2>
+        
+         <p>
+This view provides statistcs for scans (index and sequential) along with
+numbers of tuples updated through various means.  It allows you to get a pretty
+good idea of where you may need indexes or where IO-related problems may be
+coming from.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.tuple_access_stats Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>schemaname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>relname</td>
+            	<td>name</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>seq_scan</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>seq_tup_read</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>idx_scan</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>idx_tup_fetch</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>n_tup_ins</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>n_tup_upd</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>n_tup_del</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>n_tup_hot_upd</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>n_live_tup</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>n_dead_tup</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>n_mod_since_analyze</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_user_tables.schemaname
+,
+    pg_stat_user_tables.relname
+,
+    pg_stat_user_tables.seq_scan
+,
+    pg_stat_user_tables.seq_tup_read
+,
+    pg_stat_user_tables.idx_scan
+,
+    pg_stat_user_tables.idx_tup_fetch
+,
+    pg_stat_user_tables.n_tup_ins
+,
+    pg_stat_user_tables.n_tup_upd
+,
+    pg_stat_user_tables.n_tup_del
+,
+    pg_stat_user_tables.n_tup_hot_upd
+,
+    pg_stat_user_tables.n_live_tup
+,
+    pg_stat_user_tables.n_dead_tup
+,
+    pg_stat_user_tables.n_mod_since_analyze
+   
+FROM pg_stat_user_tables;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+        <hr>
+		<h2>View:
+			
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a>
+		</h2>
+        
+         <p>
+This view provides basic, cluster-global, statistics on why queries are waiting
+on other queries.
+</p>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>pgtelemetry.waiting_connections_by_event_type Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>wait_event_type</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>count</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_activity.wait_event_type
+,
+    count
+(*) AS count
+   
+FROM pg_stat_activity
+  
+WHERE (pg_stat_activity.wait_event IS NOT NULL)
+  
+GROUP BY pg_stat_activity.wait_event_type;</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
+    </p>
+	
+
+	<!-- We've gone through the table structure, now lets take a look at user functions -->
+	
+		<hr>
+		<h2>Function:
+			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.function.wal-telemetry">wal_telemetry()</a>
+		</h2>
+<h3>Returns: SET OF record</h3>
+<h3>Language: SQL</h3>
+        <p>
+The wal_telemetry(0 function checks the current wal location and compares
+with the last entry in the pg_telemetry_wal_log.  It then provides for you
+both current and last data, and the differences between them.  These include
+bytes elapsed and seconds elapsed, and bytes per sec.
+
+The function is designed so that you can export delta information to a monitoring
+solution such as munin or prometheus without the latter having to know anything
+about lsn representation or losing information in the process.
+
+This function cnnnot be run on a replica though you can analyxe the wal logs.
+</p>
+        <pre>
+WITH current_record AS (
+       insert into pg_telemetry_wal_log
+       select extract(&#39;epoch&#39; from now()), now(),
+              case when pg_is_in_recovery()
+                   then pg_last_xlog_replay_location()
+                   else pg_current_xlog_location() end as wal_location
+       returning *
+   )
+   select c.run_time as current_epoch, l.run_time as last_epoch,
+          c.run_time - l.run_time as secs_elapsed,
+          c.lsn as current_lsn, l.lsn as last_lsn,
+          c.lsn - l.lsn as bytes_elapsed,
+          (c.lsn - l.lsn)::numeric / (c.run_time - l.run_time) as bytes_per_sec
+     FROM current_record c,
+  lateral (select * from pg_telemetry_wal_log where run_time &lt; c.run_time
+            order by run_time desc limit 1) l;
+</pre>
+	
+
+<!-- publicpublic -->
+
+		
+		<hr>
+		<h1>Schema public</h1>
+		
+			<p>standard public schema</p>
+		
+
+		
+		
+        <hr>
+		<h2>View:
+			
+			<a href="#public.schema">public</a>.<a name="public.view.pg-stat-statements">pg_stat_statements</a>
+		</h2>
+        
+
+
+        <table width="100%" cellspacing="0" cellpadding="3">
+                <caption>public.pg_stat_statements Structure</caption>
+                <tr>
+                <th>F-Key</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>userid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>dbid</td>
+            	<td>oid</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>queryid</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>query</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>calls</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>total_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>min_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>max_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>mean_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>stddev_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>rows</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>shared_blks_hit</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>shared_blks_read</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>shared_blks_dirtied</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>shared_blks_written</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>local_blks_hit</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>local_blks_read</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>local_blks_dirtied</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>local_blks_written</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>temp_blks_read</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>temp_blks_written</td>
+            	<td>bigint</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
+            	<td>blk_read_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr0">
+				<td>
+                
+                </td>
+            	<td>blk_write_time</td>
+            	<td>double precision</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+        </table>
+
+        <!-- Inherits -->
+		
+
+		
+
+        <!-- Constraint List -->
+		
+
+        <!-- Foreign Key Discovery -->
+		
+
+    <!-- Indexes -->
+    
+
+	<!-- View Definition -->
+	
+	<pre>
+SELECT pg_stat_statements.userid
+,
+    pg_stat_statements.dbid
+,
+    pg_stat_statements.queryid
+,
+    pg_stat_statements.query
+,
+    pg_stat_statements.calls
+,
+    pg_stat_statements.total_time
+,
+    pg_stat_statements.min_time
+,
+    pg_stat_statements.max_time
+,
+    pg_stat_statements.mean_time
+,
+    pg_stat_statements.stddev_time
+,
+    pg_stat_statements.rows
+,
+    pg_stat_statements.shared_blks_hit
+,
+    pg_stat_statements.shared_blks_read
+,
+    pg_stat_statements.shared_blks_dirtied
+,
+    pg_stat_statements.shared_blks_written
+,
+    pg_stat_statements.local_blks_hit
+,
+    pg_stat_statements.local_blks_read
+,
+    pg_stat_statements.local_blks_dirtied
+,
+    pg_stat_statements.local_blks_written
+,
+    pg_stat_statements.temp_blks_read
+,
+    pg_stat_statements.temp_blks_written
+,
+    pg_stat_statements.blk_read_time
+,
+    pg_stat_statements.blk_write_time
+   
+FROM pg_stat_statements
+(true) pg_stat_statements
+(userid
+     , dbid
+     , queryid
+     , query
+     , calls
+     , total_time
+     , min_time
+     , max_time
+     , mean_time
+     , stddev_time
+     , rows
+     , shared_blks_hit
+     , shared_blks_read
+     , shared_blks_dirtied
+     , shared_blks_written
+     , local_blks_hit
+     , local_blks_read
+     , local_blks_dirtied
+     , local_blks_written
+     , temp_blks_read
+     , temp_blks_written
+     , blk_read_time
+     , blk_write_time
+);</pre>
+	
+
+	<!-- List off permissions -->
+	
+
+	<p>
+		<a href="#index">Index</a> -
+		<a href="#public.schema">Schema public</a>
+    </p>
+	
+
+	<!-- We've gone through the table structure, now lets take a look at user functions -->
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema">public</a>.<a name="public.function.pg-stat-statements-showtext-boolean">pg_stat_statements(showtext boolean)</a>
+		</h2>
+<h3>Returns: SET OF record</h3>
+<h3>Language: C</h3>
+        
+        <pre>pg_stat_statements_1_3</pre>
+	
+		<hr>
+		<h2>Function:
+			<a href="#public.schema">public</a>.<a name="public.function.pg-stat-statements-reset">pg_stat_statements_reset()</a>
+		</h2>
+<h3>Returns: void</h3>
+<h3>Language: C</h3>
+        
+        <pre>pg_stat_statements_reset</pre>
+	
+
+
+<p class="w3ref">Generated by <a href="http://www.rbt.ca/autodoc/">PostgreSQL Autodoc</a></p>
+<p class="w3ref"><a href="http://validator.w3.org/check/referer">W3C HTML 4.01 Strict</a></p>
+</body></html>

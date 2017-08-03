@@ -34,4 +34,14 @@ In the initial phase, there are several areas of focus for this project:
  * WAL throughput
  * Replication Monitoring
 
-Stay tuned for docs.
+## Requirements
+
+Currently this is expected to require PostgreSQL 9.6 and PostgreSQL 10 will be 
+added in the near future.  However support for PostgreSQL instances before 9.6
+is an area of interest and may be added anyway.
+
+This module also requires that pg_stat_statements is installed.
+
+## Documentation of monitoring
+
+See the pgtelemetry.html in the doc folder.
