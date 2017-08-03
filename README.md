@@ -44,4 +44,4 @@ This module also requires that pg_stat_statements is installed.
 
 ## Documentation of monitoring
 
-See the pgtelemetry.html in the doc folder.
+See the [pgtelemetry.html](doc/pgtelemetry.html) in the doc folder.
