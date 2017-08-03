@@ -4,7 +4,7 @@
 
 <html>
   <head>
-    <title>Index for extest</title>
+    <title>Index for pgtelemetry</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
 	BODY {
@@ -113,17 +113,12 @@
 
     <!-- Primary Index -->
 	<p><br><br>Dumped on 2017-08-03</p>
-<h1><a name="index">Index of database - extest</a></h1>
+<h1><a name="index">Index of database - pgtelemetry</a></h1>
 <ul>
     
     <li><a name="pgtelemetry.schema">pgtelemetry</a></li><ul>
     	<li><a href="#pgtelemetry.view.autovacuum-stats">autovacuum_stats</a></li><li><a href="#pgtelemetry.view.catalog-total-size">catalog_total_size</a></li><li><a href="#pgtelemetry.view.connections-by-application">connections_by_application</a></li><li><a href="#pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a></li><li><a href="#pgtelemetry.view.connections-by-state">connections_by_state</a></li><li><a href="#pgtelemetry.view.database-size">database_size</a></li><li><a href="#pgtelemetry.view.index-size">index_size</a></li><li><a href="#pgtelemetry.view.locks-by-mode">locks_by_mode</a></li><li><a href="#pgtelemetry.view.locks-by-type">locks_by_type</a></li><li><a href="#pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a></li><li><a href="#pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a></li><li><a href="#pgtelemetry.view.relation-toast-size">relation_toast_size</a></li><li><a href="#pgtelemetry.view.relation-total-size">relation_total_size</a></li><li><a href="#pgtelemetry.view.replication-slot-lag">replication_slot_lag</a></li><li><a href="#pgtelemetry.view.statement-query-buffers">statement_query_buffers</a></li><li><a href="#pgtelemetry.view.statement-query-by-id">statement_query_by_id</a></li><li><a href="#pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a></li><li><a href="#pgtelemetry.view.tablespace-size">tablespace_size</a></li><li><a href="#pgtelemetry.view.tuple-access-stats">tuple_access_stats</a></li><li><a href="#pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a></li>
   	<li><a href="#pgtelemetry.function.wal-telemetry">wal_telemetry()</a></li>
-    </ul>
-    
-    <li><a name="public.schema">public</a></li><ul>
-    	<li><a href="#public.view.pg-stat-statements">pg_stat_statements</a></li>
-  	<li><a href="#public.function.pg-stat-statements-showtext-boolean">pg_stat_statements(showtext boolean)</a></li><li><a href="#public.function.pg-stat-statements-reset">pg_stat_statements_reset()</a></li>
     </ul>
     
 </ul>
@@ -132,16 +127,10 @@
     <!-- pgtelemetrypgtelemetry -->
 
 		
-		<hr>
-		<h1>Schema pgtelemetry</h1>
-		
-
-		
 		
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.autovacuum-stats">autovacuum_stats</a>
+			<a name="pgtelemetry.view.autovacuum-stats">autovacuum_stats</a>
 		</h2>
         
          <p>
@@ -152,7 +141,7 @@ autovacuum and analyze were last run (as well as manual maintenance).
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.autovacuum_stats Structure</caption>
+                <caption>autovacuum_stats Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -472,14 +461,13 @@ FROM pg_stat_user_tables;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.catalog-total-size">catalog_total_size</a>
+			<a name="pgtelemetry.view.catalog-total-size">catalog_total_size</a>
 		</h2>
         
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.catalog_total_size Structure</caption>
+                <caption>catalog_total_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -659,8 +647,7 @@ WHERE (
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-application">connections_by_application</a>
+			<a name="pgtelemetry.view.connections-by-application">connections_by_application</a>
 		</h2>
         
          <p>
@@ -672,7 +659,7 @@ By default the application name is the program name that connected to the db.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.connections_by_application Structure</caption>
+                <caption>connections_by_application Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -751,8 +738,7 @@ GROUP BY pg_stat_activity.application_name;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a>
+			<a name="pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a>
 		</h2>
         
          <p>
@@ -764,7 +750,7 @@ as well as porblems like connection handle leaks.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.connections_by_ip_source Structure</caption>
+                <caption>connections_by_ip_source Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -843,8 +829,7 @@ GROUP BY pg_stat_activity.client_addr;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.connections-by-state">connections_by_state</a>
+			<a name="pgtelemetry.view.connections-by-state">connections_by_state</a>
 		</h2>
         
          <p>
@@ -856,7 +841,7 @@ latch, we change this to &#39;waiting.&#39;
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.connections_by_state Structure</caption>
+                <caption>connections_by_state Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -945,8 +930,7 @@ GROUP BY
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.database-size">database_size</a>
+			<a name="pgtelemetry.view.database-size">database_size</a>
 		</h2>
         
          <p>
@@ -956,7 +940,7 @@ This provides cluser-wide size statistics of databases.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.database_size Structure</caption>
+                <caption>database_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1054,8 +1038,7 @@ FROM pg_database;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.index-size">index_size</a>
+			<a name="pgtelemetry.view.index-size">index_size</a>
 		</h2>
         
          <p>
@@ -1066,7 +1049,7 @@ performance of GIN indexes among other things.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.index_size Structure</caption>
+                <caption>index_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1203,8 +1186,7 @@ WHERE (
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.locks-by-mode">locks_by_mode</a>
+			<a name="pgtelemetry.view.locks-by-mode">locks_by_mode</a>
 		</h2>
         
          <p>
@@ -1216,7 +1198,7 @@ provides a some opportunities to spot locking problems.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.locks_by_mode Structure</caption>
+                <caption>locks_by_mode Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1295,8 +1277,7 @@ GROUP BY pg_locks.mode;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.locks-by-type">locks_by_type</a>
+			<a name="pgtelemetry.view.locks-by-type">locks_by_type</a>
 		</h2>
         
          <p>
@@ -1309,7 +1290,7 @@ helpful in determining where the locks are coming from.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.locks_by_type Structure</caption>
+                <caption>locks_by_type Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1388,8 +1369,7 @@ GROUP BY pg_locks.locktype;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a>
+			<a name="pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a>
 		</h2>
         
          <p>
@@ -1401,7 +1381,7 @@ as well.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.longest_running_active_queries Structure</caption>
+                <caption>longest_running_active_queries Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1598,8 +1578,7 @@ ORDER BY (age
 	
         <hr>
 		<h2>Table:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a>
+			<a name="pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a>
 		</h2>
         
          <p>
@@ -1618,7 +1597,7 @@ You can also process these as a time series using WINDOW functions like lag.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.pg_telemetry_wal_log Structure</caption>
+                <caption>pg_telemetry_wal_log Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1721,8 +1700,7 @@ You can also process these as a time series using WINDOW functions like lag.
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.relation-toast-size">relation_toast_size</a>
+			<a name="pgtelemetry.view.relation-toast-size">relation_toast_size</a>
 		</h2>
         
          <p>
@@ -1739,7 +1717,7 @@ been moved far more expensive to retrieve and process.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.relation_toast_size Structure</caption>
+                <caption>relation_toast_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -1878,8 +1856,7 @@ FROM (
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.relation-total-size">relation_total_size</a>
+			<a name="pgtelemetry.view.relation-total-size">relation_total_size</a>
 		</h2>
         
          <p>
@@ -1895,7 +1872,7 @@ quickly query this information and make decisions.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.relation_total_size Structure</caption>
+                <caption>relation_total_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2076,8 +2053,7 @@ WHERE (
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.replication-slot-lag">replication_slot_lag</a>
+			<a name="pgtelemetry.view.replication-slot-lag">replication_slot_lag</a>
 		</h2>
         
          <p>
@@ -2092,7 +2068,7 @@ replication slots for downstream replication tracking.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.replication_slot_lag Structure</caption>
+                <caption>replication_slot_lag Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2294,8 +2270,7 @@ ORDER BY s.slot_name;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-buffers">statement_query_buffers</a>
+			<a name="pgtelemetry.view.statement-query-buffers">statement_query_buffers</a>
 		</h2>
         
          <p>
@@ -2306,7 +2281,7 @@ per query and database name.  This view provides low-level IO statistics.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.statement_query_buffers Structure</caption>
+                <caption>statement_query_buffers Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2524,8 +2499,7 @@ GROUP BY d.datname
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-by-id">statement_query_by_id</a>
+			<a name="pgtelemetry.view.statement-query-by-id">statement_query_by_id</a>
 		</h2>
         
          <p>
@@ -2540,7 +2514,7 @@ while querying this view and turn it off for the others.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.statement_query_by_id Structure</caption>
+                <caption>statement_query_by_id Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2619,8 +2593,7 @@ GROUP BY pg_stat_statements.queryid
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a>
+			<a name="pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a>
 		</h2>
         
          <p>
@@ -2632,7 +2605,7 @@ statistics.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.statement_query_rows_time Structure</caption>
+                <caption>statement_query_rows_time Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2774,8 +2747,7 @@ GROUP BY d.datname
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.tablespace-size">tablespace_size</a>
+			<a name="pgtelemetry.view.tablespace-size">tablespace_size</a>
 		</h2>
         
          <p>
@@ -2789,7 +2761,7 @@ and then the size of the relations in the largest database in that order.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.tablespace_size Structure</caption>
+                <caption>tablespace_size Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -2887,8 +2859,7 @@ FROM pg_tablespace;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.tuple-access-stats">tuple_access_stats</a>
+			<a name="pgtelemetry.view.tuple-access-stats">tuple_access_stats</a>
 		</h2>
         
          <p>
@@ -2901,7 +2872,7 @@ coming from.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.tuple_access_stats Structure</caption>
+                <caption>tuple_access_stats Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -3175,8 +3146,7 @@ FROM pg_stat_user_tables;</pre>
 	
         <hr>
 		<h2>View:
-			
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a>
+			<a name="pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a>
 		</h2>
         
          <p>
@@ -3187,7 +3157,7 @@ on other queries.
 
 
         <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>pgtelemetry.waiting_connections_by_event_type Structure</caption>
+                <caption>waiting_connections_by_event_type Structure</caption>
                 <tr>
                 <th>F-Key</th>
                 <th>Name</th>
@@ -3271,7 +3241,7 @@ GROUP BY pg_stat_activity.wait_event_type;</pre>
 	
 		<hr>
 		<h2>Function:
-			<a href="#pgtelemetry.schema">pgtelemetry</a>.<a name="pgtelemetry.function.wal-telemetry">wal_telemetry()</a>
+			<a href="#pgtelemetry.schema"><a name="pgtelemetry.function.wal-telemetry">wal_telemetry()</a>
 		</h2>
 <h3>Returns: SET OF record</h3>
 <h3>Language: SQL</h3>
@@ -3305,525 +3275,6 @@ WITH current_record AS (
   lateral (select * from pg_telemetry_wal_log where run_time &lt; c.run_time
             order by run_time desc limit 1) l;
 </pre>
-	
-
-<!-- publicpublic -->
-
-		
-		<hr>
-		<h1>Schema public</h1>
-		
-			<p>standard public schema</p>
-		
-
-		
-		
-        <hr>
-		<h2>View:
-			
-			<a href="#public.schema">public</a>.<a name="public.view.pg-stat-statements">pg_stat_statements</a>
-		</h2>
-        
-
-
-        <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>public.pg_stat_statements Structure</caption>
-                <tr>
-                <th>F-Key</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>userid</td>
-            	<td>oid</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>dbid</td>
-            	<td>oid</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>queryid</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>query</td>
-            	<td>text</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>calls</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>total_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>min_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>max_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>mean_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>stddev_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>rows</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>shared_blks_hit</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>shared_blks_read</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>shared_blks_dirtied</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>shared_blks_written</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>local_blks_hit</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>local_blks_read</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>local_blks_dirtied</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>local_blks_written</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>temp_blks_read</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>temp_blks_written</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>blk_read_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>blk_write_time</td>
-            	<td>double precision</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-        </table>
-
-        <!-- Inherits -->
-		
-
-		
-
-        <!-- Constraint List -->
-		
-
-        <!-- Foreign Key Discovery -->
-		
-
-    <!-- Indexes -->
-    
-
-	<!-- View Definition -->
-	
-	<pre>
-SELECT pg_stat_statements.userid
-,
-    pg_stat_statements.dbid
-,
-    pg_stat_statements.queryid
-,
-    pg_stat_statements.query
-,
-    pg_stat_statements.calls
-,
-    pg_stat_statements.total_time
-,
-    pg_stat_statements.min_time
-,
-    pg_stat_statements.max_time
-,
-    pg_stat_statements.mean_time
-,
-    pg_stat_statements.stddev_time
-,
-    pg_stat_statements.rows
-,
-    pg_stat_statements.shared_blks_hit
-,
-    pg_stat_statements.shared_blks_read
-,
-    pg_stat_statements.shared_blks_dirtied
-,
-    pg_stat_statements.shared_blks_written
-,
-    pg_stat_statements.local_blks_hit
-,
-    pg_stat_statements.local_blks_read
-,
-    pg_stat_statements.local_blks_dirtied
-,
-    pg_stat_statements.local_blks_written
-,
-    pg_stat_statements.temp_blks_read
-,
-    pg_stat_statements.temp_blks_written
-,
-    pg_stat_statements.blk_read_time
-,
-    pg_stat_statements.blk_write_time
-   
-FROM pg_stat_statements
-(true) pg_stat_statements
-(userid
-     , dbid
-     , queryid
-     , query
-     , calls
-     , total_time
-     , min_time
-     , max_time
-     , mean_time
-     , stddev_time
-     , rows
-     , shared_blks_hit
-     , shared_blks_read
-     , shared_blks_dirtied
-     , shared_blks_written
-     , local_blks_hit
-     , local_blks_read
-     , local_blks_dirtied
-     , local_blks_written
-     , temp_blks_read
-     , temp_blks_written
-     , blk_read_time
-     , blk_write_time
-);</pre>
-	
-
-	<!-- List off permissions -->
-	
-
-	<p>
-		<a href="#index">Index</a> -
-		<a href="#public.schema">Schema public</a>
-    </p>
-	
-
-	<!-- We've gone through the table structure, now lets take a look at user functions -->
-	
-		<hr>
-		<h2>Function:
-			<a href="#public.schema">public</a>.<a name="public.function.pg-stat-statements-showtext-boolean">pg_stat_statements(showtext boolean)</a>
-		</h2>
-<h3>Returns: SET OF record</h3>
-<h3>Language: C</h3>
-        
-        <pre>pg_stat_statements_1_3</pre>
-	
-		<hr>
-		<h2>Function:
-			<a href="#public.schema">public</a>.<a name="public.function.pg-stat-statements-reset">pg_stat_statements_reset()</a>
-		</h2>
-<h3>Returns: void</h3>
-<h3>Language: C</h3>
-        
-        <pre>pg_stat_statements_reset</pre>
 	
 
 
