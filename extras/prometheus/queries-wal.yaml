@@ -1,0 +1,10 @@
+wal_telemetry:
+   query:
+      "select now(), bytes_per_sec from pgtelemetry.wal_telemetry()"
+   metrics:
+      - now:
+        usage: "LABEL"
+        description: "Time of measurement"
+      - bytes_per_sec: 
+        usage: "GAUGE"
+        description: "Bytes per sec to WAL"

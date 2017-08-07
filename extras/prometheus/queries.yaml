@@ -1,0 +1,207 @@
+# A queries.yaml file for postgres_exporter to prometheus
+
+relation_total_size:
+   query:  "select relation, inclusive_bytes, exclusive_bytes from pgtelemetry.relation_total_size"
+   metrics:
+      - relation:
+         usage: "LABEL"
+         description:  "Table Name"
+      - inclusive_bytes:
+         usage: "GAUGE"
+         description: "Size of table, including indexes and toast"
+      - exclusive_bytes:
+         usage: "GAUGE"
+         description: "Size of table, excluding indexes and toast"
+
+catalog_total_size:
+   query:  "select relation, inclusive_bytes, exclusive_bytes from pgtelemetry.catalog_total_size"
+   metrics:
+      - relation:
+         usage: "LABEL"
+         description:  "Table Name"
+      - inclusive_bytes:
+         usage: "GAUGE"
+         description: "Size of table, including indexes and toast"
+      - exclusive_bytes:
+         usage: "GAUGE"
+         description: "Size of table, excluding indexes and toast"
+
+toast_total_size:
+   query:  "select relation, exclusive_bytes from pgtelemetry.toast_total_size"
+   metrics:
+      - relation:
+         usage: "LABEL"
+         description:  "Table Name"
+      - exclusive_bytes:
+         usage: "GAUGE"
+         description: "Size of table, excluding indexes and toast"
+
+tablespace_total_size:
+   query:  "select name, bytes from pgtelemetry.tablespace_size"
+   metrics:
+      - name:
+         usage: "LABEL"
+         description:  "Tablespace Name"
+      - bytes:
+         usage: "GAUGE"
+         description: "Size of table, excluding indexes and toast"
+
+database_total_size:
+   query:  "select name, bytes from pgtelemetry.tablespace_size"
+   metrics:
+      - name:
+         usage: "LABEL"
+         description:  "Database Name"
+      - bytes:
+         usage: "GAUGE"
+         description: "Size of table, excluding indexes and toast"
+
+connections_by_application:
+   query: 'select application_name, "count" from pgtelemetry.connections_by_application"
+   metrics:
+       - application_name:
+          usage: "LABEL"
+          description: "Application name of connections"
+       - count:
+          usage: "GAUGE"
+          "Number of connections current"
+
+connections_by_state:
+   query: 'select state, "count" from pgtelemetry.connections_by_state"
+   metrics:
+       - state:
+          usage: "LABEL"
+          description: "Query state"
+       - count:
+          usage: "GAUGE"
+          "Number of connections current"
+
+connections_by_ip_source
+   query: 'select client_addr, "count" from pgtelemetry.connections_by_ip_source"
+   metrics:
+       - client_addr:
+          usage: "LABEL"
+       - count:
+          usage: "GAUGE"
+          "Number of connections current"
+
+waiting_connections_by_event_type:
+   query: 'select wait_event_type, "count" from pgtelemetry.connections_by_ip_source"
+   metrics:
+       - wait_event_type:
+          usage: "LABEL"
+          description: "General Reason for Wait"
+       - count:
+          usage: "GAUGE"
+          "Number of waiting connections (cluster)"
+
+locks_by_type:
+   query: 'select locktype, "count" from pgtelemetry.locks_by_type"
+   metrics:
+       - locktype:
+          usage: "LABEL"
+          description: "Type of lock"
+       - count:
+          usage: "GAUGE"
+          description: "Number of locks (cluster)"
+
+locks_by_mode:
+   query: 'select mode, "count" from pgtelemetry.connections_by_ip_source"
+   metrics:
+       - mode:
+          usage: "LABEL"
+          description: "Lock mode"
+       - count:
+          usage: "GAUGE"
+          description: "Number of locks (cluster)"
+
+tuple_access_stats:
+    query: "SELECT schemaname, relname, seqscan, seq_tup_read, idx_scan, idx_tup_fetch, n_tup_ins, n_tup_upd, n_tup_del, n_tup_hot_upd, n_live_tup, n_dead_tup, n_mod_since_analyze from tuple_access_stats"
+    metrics:
+       - schemaname:
+          usage: "LABEL"
+          description: "Schema of relation"
+       - relname:
+          usage: "LABEL"
+          description: "Name of relation"
+       - seq_scan:
+          usage: "COUNTER"
+          description: "Number of sequential scans"
+      - seq_tup_read:
+          usage: "COUNTER"
+          description: "Tuples fetched by sequential scan"
+      - idx_scan:
+          usage: "COUNTER"
+          description: "Number of index scans"
+      - idx_tup_fetch:
+          usage: "COUNTER"
+          description: "Number of tuples fetched by index scan"
+      - n_tup_ins:
+          usage: "COUNTER"
+          description: "Number of tuples inserted"
+      - n_tup_upd:
+          usage: "COUNTER"
+          description: "Number of tuples updated"
+      - n_tup_del:
+          usage: "COUNTER"
+          description: "Number of tuples deleted"
+      - n_tup_hot_upd:
+          usage: "COUNTER"
+          description: "Number of tuples HOT updated (i.e. no index update)"
+      - n_live_tup:
+          usage: "GAUGE"
+          description: "Estimated live tuples"
+      - n_dead_tup:
+          usage: "GAUGE"
+          description: "Estimated dead tuples"
+      - n_mod_since_analyze:
+          usage: "GAUGE"
+          description: "Estimated modified tuples since analyze"
+
+autovacuum_stats:
+    query: "select schemaname, relname, age_last_vacuum, vacuum_count, age_last_autovacuum, autovacuum_count,  age_last_analyze, analyze_count, age_last_autoanalyze, autoanalyze_count from autovacuum_stats"
+    metrics:
+       - schemaname:
+          usage: "LABEL"
+          description: "Schema of relation"
+       - relname:
+          usage: "LABEL"
+          description: "Name of relation"
+       - age_last_vacuum:
+          usage: "GAUGE"
+          description: "Seconds since last vacuum"
+       - vacuum_count:
+          usage: "COUNTER"
+          description: "Number of vacuums of table"
+       - age_last_autovacuum:
+          usage: "GAUGE"
+          description: "Seconds since last autovacuum"
+       - autovacuum_count:
+          usage: "COUNTER"
+          description: "Number of autovacuums of table"
+       - age_last_analyze:
+          usage: "GAUGE"
+          description: "Seconds since last analyze"
+       - analyze_count:
+          usage: "COUNTER"
+          description: "Number of analyze runs of table"
+       - age_last_autoanalyze:
+          usage: "GAUGE"
+          description: "Seconds since last autoanalyze"
+       - autoanalyze_count:
+          usage: "COUNTER"
+          description: "Number of autoanalyze runs of table" 
+
+replication_slot_lag:
+   query: "select slot_name, slot_type, lag_bytes from replication_slot_lag"
+   metrics:
+       - slot_name
+          usage: "LABEL"
+          description: "Name"
+       - slot_type
+          usage: "LABEL"
+          description: "Logical or Physical"
+       - lag_bytes
+          usage: "GAUGE"
+          description: "WAL bytes not guaranteed received"
+
