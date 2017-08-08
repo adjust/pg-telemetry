@@ -1,0 +1,43 @@
+{
+   "name": "pgtelemetry",
+   "abstract": "Useful monitoring and metrics views for PostgreSQL",
+   "version": "0.1.0",
+   "maintainer": [ "Chris Travers <christravers@adjust.com>" ],
+   "license": {
+      "PostgreSQL": "http://www.postgresql.org/about/licence"
+   },
+   "provides": { 
+      "pgtelemetry": {
+         "file": "extension/pgtelemetry--0.1.sql",
+         "docfile": "doc/pgtelemetry.html",
+         "version": "0.1.0",
+         "abstract": "Useful monitoring and metrics for PostgreSQL"
+      }
+   },
+   "meta-spec": {
+     "version": "1.0.0",
+     "url": "http://pgxn.org/meta/spec.txt"
+   },
+   "description": "pgtelemetry is a suite of views, functions and tables which gather and produce a variety of useful metrics for monitoring health of clusters including locks, state of queries, query plans, object size, replication health, and WAL telemetry.",
+   "tags": [ "monitoring"],
+   "prereqs": {
+      "runtime": {
+        "requires": {
+           "PostgreSQL": "9.6.0",
+           "pg_stat_statements": 0
+        }
+      }
+   },
+   "resources": {
+       "homepage": "http://big-elephants.com/pg-telemetry//",
+       "bugtracker": {
+           "web": "http://github.com/adjust/pg-telemetry/issues"
+       },
+       "repository": {
+          "url": "git://github.com/adjust/pg-telemetry.git",
+          "web": "http://github.com/adjust/pg-telemetry",
+          "type": "git"
+       }
+   }
+}
+

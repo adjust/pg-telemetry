@@ -71,7 +71,7 @@ In the extras directory there are a number of important integration examples.
 
 extras/prometheus:
 
-   * wueries.yaml includes a basic yaml for pulling stats into Prometheus
+   * queries.yaml includes a basic yaml for pulling stats into Prometheus
    * queries_wal.yaml is a basic wal telemetry yaml that can be run on
 master databasess
 
