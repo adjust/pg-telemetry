@@ -6,6 +6,6 @@ env:
   - COVERAGE=1 RELEASE_TESTING=1 DB_TESTING=1
 install:
   - sudo apt-get install postgresql-server-dev-9.6
-  - make install
+  - sudo make install
 script:
   - make installcheck
