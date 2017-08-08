@@ -112,12 +112,12 @@
   <body>
 
     <!-- Primary Index -->
-	<p><br><br>Dumped on 2017-08-03</p>
+	<p><br><br>Dumped on 2017-08-08</p>
 <h1><a name="index">Index of database - pgtelemetry</a></h1>
 <ul>
     
     <li><a name="pgtelemetry.schema">pgtelemetry</a></li><ul>
-    	<li><a href="#pgtelemetry.view.autovacuum-stats">autovacuum_stats</a></li><li><a href="#pgtelemetry.view.catalog-total-size">catalog_total_size</a></li><li><a href="#pgtelemetry.view.connections-by-application">connections_by_application</a></li><li><a href="#pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a></li><li><a href="#pgtelemetry.view.connections-by-state">connections_by_state</a></li><li><a href="#pgtelemetry.view.database-size">database_size</a></li><li><a href="#pgtelemetry.view.index-size">index_size</a></li><li><a href="#pgtelemetry.view.locks-by-mode">locks_by_mode</a></li><li><a href="#pgtelemetry.view.locks-by-type">locks_by_type</a></li><li><a href="#pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a></li><li><a href="#pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a></li><li><a href="#pgtelemetry.view.relation-toast-size">relation_toast_size</a></li><li><a href="#pgtelemetry.view.relation-total-size">relation_total_size</a></li><li><a href="#pgtelemetry.view.replication-slot-lag">replication_slot_lag</a></li><li><a href="#pgtelemetry.view.statement-query-buffers">statement_query_buffers</a></li><li><a href="#pgtelemetry.view.statement-query-by-id">statement_query_by_id</a></li><li><a href="#pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a></li><li><a href="#pgtelemetry.view.tablespace-size">tablespace_size</a></li><li><a href="#pgtelemetry.view.tuple-access-stats">tuple_access_stats</a></li><li><a href="#pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a></li>
+    	<li><a href="#pgtelemetry.view.autovacuum-stats">autovacuum_stats</a></li><li><a href="#pgtelemetry.view.catalog-total-size">catalog_total_size</a></li><li><a href="#pgtelemetry.view.connections-by-application">connections_by_application</a></li><li><a href="#pgtelemetry.view.connections-by-ip-source">connections_by_ip_source</a></li><li><a href="#pgtelemetry.view.connections-by-state">connections_by_state</a></li><li><a href="#pgtelemetry.view.database-size">database_size</a></li><li><a href="#pgtelemetry.view.index-size">index_size</a></li><li><a href="#pgtelemetry.view.locks-by-mode">locks_by_mode</a></li><li><a href="#pgtelemetry.view.locks-by-type">locks_by_type</a></li><li><a href="#pgtelemetry.view.longest-running-active-queries">longest_running_active_queries</a></li><li><a href="#pgtelemetry.table.pg-telemetry-wal-log">pg_telemetry_wal_log</a></li><li><a href="#pgtelemetry.view.relation-toast-size">relation_toast_size</a></li><li><a href="#pgtelemetry.view.relation-total-size">relation_total_size</a></li><li><a href="#pgtelemetry.view.replication-slot-lag">replication_slot_lag</a></li><li><a href="#pgtelemetry.view.statement-query-buffers">statement_query_buffers</a></li><li><a href="#pgtelemetry.view.statement-query-rows-time">statement_query_rows_time</a></li><li><a href="#pgtelemetry.view.tablespace-size">tablespace_size</a></li><li><a href="#pgtelemetry.view.tuple-access-stats">tuple_access_stats</a></li><li><a href="#pgtelemetry.view.waiting-connections-by-event-type">waiting_connections_by_event_type</a></li>
   	<li><a href="#pgtelemetry.function.wal-telemetry">wal_telemetry()</a></li>
     </ul>
     
@@ -2325,6 +2325,22 @@ per query and database name.  This view provides low-level IO statistics.
 				<td>
                 
                 </td>
+            	<td>query</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
             	<td>sum</td>
             	<td>numeric</td>
                 <td><i>
@@ -2337,7 +2353,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2353,7 +2369,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2369,7 +2385,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2385,7 +2401,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2401,7 +2417,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2417,7 +2433,7 @@ per query and database name.  This view provides low-level IO statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2456,6 +2472,8 @@ SELECT d.datname
 ,
     pg_stat_statements.queryid
 ,
+    pg_stat_statements.query
+,
     sum
 (pg_stat_statements.calls) AS sum
 ,
@@ -2486,100 +2504,7 @@ FROM (pg_stat_statements
 )
   
 GROUP BY d.datname
-, pg_stat_statements.queryid;</pre>
-	
-
-	<!-- List off permissions -->
-	
-
-	<p>
-		<a href="#index">Index</a> -
-		<a href="#pgtelemetry.schema">Schema pgtelemetry</a>
-    </p>
-	
-        <hr>
-		<h2>View:
-			<a name="pgtelemetry.view.statement-query-by-id">statement_query_by_id</a>
-		</h2>
-        
-         <p>
-This provides the query text for a given statement id.
-
-A major reason to break this off is actually usability.  When troubleshooting
-very often we want to see the numbers first, and having long text fields gets
-in the way.  However in addition this means you can turn on statement text only
-while querying this view and turn it off for the others.
-</p>
-        
-
-
-        <table width="100%" cellspacing="0" cellpadding="3">
-                <caption>statement_query_by_id Structure</caption>
-                <tr>
-                <th>F-Key</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                </tr>
-            
-            <tr class="tr0">
-				<td>
-                
-                </td>
-            	<td>queryid</td>
-            	<td>bigint</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-            <tr class="tr1">
-				<td>
-                
-                </td>
-            	<td>query</td>
-            	<td>text</td>
-                <td><i>
-				
-
-				
-				
-				</i>
-				
-				</td>
-			 </tr>
-            
-        </table>
-
-        <!-- Inherits -->
-		
-
-		
-
-        <!-- Constraint List -->
-		
-
-        <!-- Foreign Key Discovery -->
-		
-
-    <!-- Indexes -->
-    
-
-	<!-- View Definition -->
-	
-	<pre>
-SELECT pg_stat_statements.queryid
-,
-    pg_stat_statements.query
-   
-FROM pg_stat_statements
-  
-GROUP BY pg_stat_statements.queryid
+, pg_stat_statements.queryid
 , pg_stat_statements.query;</pre>
 	
 
@@ -2649,6 +2574,22 @@ statistics.
 				<td>
                 
                 </td>
+            	<td>query</td>
+            	<td>text</td>
+                <td><i>
+				
+
+				
+				
+				</i>
+				
+				</td>
+			 </tr>
+            
+            <tr class="tr1">
+				<td>
+                
+                </td>
             	<td>calls</td>
             	<td>numeric</td>
                 <td><i>
@@ -2661,7 +2602,7 @@ statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr1">
+            <tr class="tr0">
 				<td>
                 
                 </td>
@@ -2677,7 +2618,7 @@ statistics.
 				</td>
 			 </tr>
             
-            <tr class="tr0">
+            <tr class="tr1">
 				<td>
                 
                 </td>
@@ -2716,6 +2657,8 @@ SELECT d.datname
 ,
     pg_stat_statements.queryid
 ,
+    pg_stat_statements.query
+,
     sum
 (pg_stat_statements.calls) AS calls
 ,
@@ -2734,7 +2677,8 @@ FROM (pg_stat_statements
 )
   
 GROUP BY d.datname
-, pg_stat_statements.queryid;</pre>
+, pg_stat_statements.queryid
+, pg_stat_statements.query;</pre>
 	
 
 	<!-- List off permissions -->
@@ -3246,7 +3190,7 @@ GROUP BY pg_stat_activity.wait_event_type;</pre>
 <h3>Returns: SET OF record</h3>
 <h3>Language: SQL</h3>
         <p>
-The wal_telemetry(0 function checks the current wal location and compares
+The wal_telemetry() function checks the current wal location and compares
 with the last entry in the pg_telemetry_wal_log.  It then provides for you
 both current and last data, and the differences between them.  These include
 bytes elapsed and seconds elapsed, and bytes per sec.
