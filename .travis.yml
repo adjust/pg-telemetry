@@ -6,7 +6,7 @@ env:
   - COVERAGE=1 RELEASE_TESTING=1 DB_TESTING=1
 install:
   - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-  - sudo postgresql restart 9.6
+  - sudo service postgresql restart 9.6
   - sudo apt-get install postgresql-server-dev-9.6
   - sudo make install
 script:
