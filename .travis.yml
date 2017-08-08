@@ -9,3 +9,5 @@ install:
   - sudo make install
 script:
   - make installcheck
+after_failure:
+  - cat /home/travis/build/adjust/pg-telemetry/regression.diffs
