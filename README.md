@@ -42,6 +42,48 @@ is an area of interest and may be added anyway.
 
 This module also requires that pg_stat_statements is installed.
 
-## Documentation of monitoring
+## Documentation of monitoring views, relations, and functions
 
 See the [pgtelemetry.html](doc/pgtelemetry.html) in the doc folder.
+
+## Installation
+
+pg_stats_statements must be installed and preloaded.  Once that is the case, 
+you can use the standard make/make install process to install this extension:
+
+    make
+    make install
+
+That copies the files into the PostgreSQL extensions directory.  In some
+cases (Windows) you may need to install appropriate development tools
+such as MinGW and on Linux in some cases you may need the development
+libraries.
+
+After that, in the database you want to base your monitoring on:
+
+    create extension pgtelemetry'
+
+This will create the pgtelemetry schema and place all the objects there.
+
+## Extras
+
+In the extras directory there are a number of important integration examples.
+
+extras/prometheus:
+
+   * wueries.yaml includes a basic yaml for pulling stats into Prometheus
+   * queries_wal.yaml is a basic wal telemetry yaml that can be run on
+master databasess
+
+extras/zabbix:
+
+   * checkTablespaceSize.pl raises an alarm if any tablespace is too big
+   * checkNoLongRunningQueries.pl raises an alarm if queries have been 
+     running too long.
+   * checkWaitingQueries.pl raises an alarm if too many queries are
+     waiting on locks and latches.
+   * checkReplicationLag.pl raises an alarm if replication lag is too
+     high (checks downstream).
+
+What is too big?  To high?  Too long?  These are set in the beginning
+of the scripts making this easy to integrate with Zabbix. 

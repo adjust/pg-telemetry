@@ -250,31 +250,14 @@ $$;
 
 -- query stats
 
--- this is intended to reduce overhead by allowing us to retrieve the
--- queries when we don't get one we have seen.
-
-CREATE VIEW statement_query_by_id AS
-SELECT queryid, query FROM pg_stat_statements
-GROUP BY queryid, query;
-
-comment on view statement_query_by_id is
-$$
-This provides the query text for a given statement id.
-
-A major reason to break this off is actually usability.  When troubleshooting
-very often we want to see the numbers first, and having long text fields gets
-in the way.  However in addition this means you can turn on statement text only
-while querying this view and turn it off for the others.
-$$;
-
 -- call, time, rows
 
 CREATE VIEW statement_query_rows_time AS
-SELECT datname, queryid, sum(calls) as calls, 
+SELECT datname, queryid, query, sum(calls) as calls, 
        sum(total_time) as total_time, sum(rows) as rows
   FROM pg_stat_statements
   JOIN pg_database d ON d.oid = dbid
- GROUP BY datname, queryid;
+ GROUP BY datname, queryid, query;
 
 comment on view statement_query_rows_time is
 $$
@@ -285,7 +268,7 @@ $$;
 
 -- buffers
 CREATE VIEW statement_query_buffers AS 
-SELECT datname, queryid, sum(calls), 
+SELECT datname, queryid, query, sum(calls), 
        sum(shared_blks_hit) as shared_blks_hit,
        sum(shared_blks_read) as shared_blks_read, 
        sum(shared_blks_dirtied) as shared_blks_dirtied, 
@@ -294,7 +277,7 @@ SELECT datname, queryid, sum(calls),
        sum(temp_blks_written) as tmp_blkd_written
   FROM pg_stat_statements
   JOIN pg_database d ON d.oid = dbid
- GROUP BY datname, queryid;
+ GROUP BY datname, queryid, query;
 
 comment on view statement_query_buffers is
 $$
