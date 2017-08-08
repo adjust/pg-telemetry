@@ -27,7 +27,7 @@ catalog_total_size:
          description: "Size of table, excluding indexes and toast"
 
 toast_total_size:
-   query:  "select relation, exclusive_bytes from pgtelemetry.toast_total_size"
+   query:  "select relation, exclusive_bytes from pgtelemetry.relation_toast_size"
    metrics:
       - relation:
          usage: "LABEL"
@@ -47,7 +47,7 @@ tablespace_total_size:
          description: "Size of table, excluding indexes and toast"
 
 database_total_size:
-   query:  "select name, bytes from pgtelemetry.tablespace_size"
+   query:  "select name, bytes from pgtelemetry.database_size"
    metrics:
       - name:
          usage: "LABEL"
@@ -57,7 +57,7 @@ database_total_size:
          description: "Size of table, excluding indexes and toast"
 
 connections_by_application:
-   query: 'select application_name, "count" from pgtelemetry.connections_by_application"
+   query: 'select application_name, "count" from pgtelemetry.connections_by_application'
    metrics:
        - application_name:
           usage: "LABEL"
@@ -67,7 +67,7 @@ connections_by_application:
           "Number of connections current"
 
 connections_by_state:
-   query: 'select state, "count" from pgtelemetry.connections_by_state"
+   query: 'select state, "count" from pgtelemetry.connections_by_state'
    metrics:
        - state:
           usage: "LABEL"
@@ -77,7 +77,7 @@ connections_by_state:
           "Number of connections current"
 
 connections_by_ip_source
-   query: 'select client_addr, "count" from pgtelemetry.connections_by_ip_source"
+   query: 'select client_addr, "count" from pgtelemetry.connections_by_ip_source'
    metrics:
        - client_addr:
           usage: "LABEL"
@@ -86,7 +86,7 @@ connections_by_ip_source
           "Number of connections current"
 
 waiting_connections_by_event_type:
-   query: 'select wait_event_type, "count" from pgtelemetry.connections_by_ip_source"
+   query: 'select wait_event_type, "count" from pgtelemetry.waiting_connections_by_event_type'
    metrics:
        - wait_event_type:
           usage: "LABEL"
@@ -96,7 +96,7 @@ waiting_connections_by_event_type:
           "Number of waiting connections (cluster)"
 
 locks_by_type:
-   query: 'select locktype, "count" from pgtelemetry.locks_by_type"
+   query: 'select locktype, "count" from pgtelemetry.locks_by_type'
    metrics:
        - locktype:
           usage: "LABEL"
@@ -106,7 +106,7 @@ locks_by_type:
           description: "Number of locks (cluster)"
 
 locks_by_mode:
-   query: 'select mode, "count" from pgtelemetry.connections_by_ip_source"
+   query: 'select mode, "count" from pgtelemetry.locks_by_mode'
    metrics:
        - mode:
           usage: "LABEL"
@@ -116,7 +116,7 @@ locks_by_mode:
           description: "Number of locks (cluster)"
 
 tuple_access_stats:
-    query: "SELECT schemaname, relname, seqscan, seq_tup_read, idx_scan, idx_tup_fetch, n_tup_ins, n_tup_upd, n_tup_del, n_tup_hot_upd, n_live_tup, n_dead_tup, n_mod_since_analyze from tuple_access_stats"
+    query: "SELECT schemaname, relname, seq_scan, seq_tup_read, idx_scan, idx_tup_fetch, n_tup_ins, n_tup_upd, n_tup_del, n_tup_hot_upd, n_live_tup, n_dead_tup, n_mod_since_analyze from pgtelemetry.tuple_access_stats"
     metrics:
        - schemaname:
           usage: "LABEL"
@@ -159,7 +159,7 @@ tuple_access_stats:
           description: "Estimated modified tuples since analyze"
 
 autovacuum_stats:
-    query: "select schemaname, relname, age_last_vacuum, vacuum_count, age_last_autovacuum, autovacuum_count,  age_last_analyze, analyze_count, age_last_autoanalyze, autoanalyze_count from autovacuum_stats"
+    query: "select schemaname, relname, age_last_vacuum, vacuum_count, age_last_autovacuum, autovacuum_count,  age_last_analyze, analyze_count, age_last_autoanalyze, autoanalyze_count from pgtelemetry.autovacuum_stats"
     metrics:
        - schemaname:
           usage: "LABEL"
@@ -193,7 +193,7 @@ autovacuum_stats:
           description: "Number of autoanalyze runs of table" 
 
 replication_slot_lag:
-   query: "select slot_name, slot_type, lag_bytes from replication_slot_lag"
+   query: "select slot_name, slot_type, lag_bytes from pgtelemetry.replication_slot_lag"
    metrics:
        - slot_name
           usage: "LABEL"
