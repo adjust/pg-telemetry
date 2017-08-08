@@ -1,5 +1,5 @@
+set client_min_messages to warning;
 create extension pgtelemetry cascade;
-NOTICE:  installing required extension "pg_stat_statements"
 select count(*) > 0 from pgtelemetry.database_size;
  ?column? 
 ----------

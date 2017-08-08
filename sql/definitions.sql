@@ -1,3 +1,4 @@
+set client_min_messages to warning;
 create extension pgtelemetry cascade;
 select count(*) > 0 from pgtelemetry.database_size;
 SELECT count(*) > 0 from pgtelemetry.relation_total_size;
