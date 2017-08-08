@@ -1,4 +1,3 @@
-nguage: c
 sudo: required
 addons:
    postgresql: "9.6"
