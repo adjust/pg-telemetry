@@ -61,7 +61,7 @@ libraries.
 
 After that, in the database you want to base your monitoring on:
 
-    create extension pgtelemetry'
+    create extension pgtelemetry;
 
 This will create the pgtelemetry schema and place all the objects there.
 
