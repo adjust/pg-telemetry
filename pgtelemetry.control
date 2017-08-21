@@ -1,4 +1,4 @@
-default_version = '0.1'
+default_version = '0.2'
 directory = 'extension'
 requires = 'pg_stat_statements'
 relocatable = 'false'
