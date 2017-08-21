@@ -1,16 +1,16 @@
 {
    "name": "pgtelemetry",
    "abstract": "Useful monitoring and metrics views for PostgreSQL",
-   "version": "0.1.0",
+   "version": "0.2.0",
    "maintainer": [ "Chris Travers <christravers@adjust.com>" ],
    "license": {
       "PostgreSQL": "http://www.postgresql.org/about/licence"
    },
    "provides": { 
       "pgtelemetry": {
-         "file": "extension/pgtelemetry--0.1.sql",
+         "file": "extension/pgtelemetry-HEAD.sql",
          "docfile": "doc/pgtelemetry.html",
-         "version": "0.1.0",
+         "version": "0.2.0",
          "abstract": "Useful monitoring and metrics for PostgreSQL"
       }
    },
@@ -29,7 +29,7 @@
       }
    },
    "resources": {
-       "homepage": "http://big-elephants.com/pg-telemetry//",
+       "homepage": "http://big-elephants.com/pg-telemetry/",
        "bugtracker": {
            "web": "http://github.com/adjust/pg-telemetry/issues"
        },
