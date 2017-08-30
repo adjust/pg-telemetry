@@ -9,8 +9,7 @@ begin
     else
        insert into pg_telemetry_wal_log
        select extract('epoch' from now()), now(),
-                   pg_current_xlog_location() end as wal_location
-       WHERE NOT is_replica()
+                   pg_current_xlog_location() as wal_location
        returning * into log_entry;
     end if;
     return log_entry;
@@ -22,7 +21,6 @@ create function wal_telemetry() returns table (
    current_lsn pg_lsn, last_lsn pg_lsn, bytes_elapsed numeric,
    bytes_per_sec numeric
 ) language sql as $$
-WITH insert_record AS 
    select c.run_time as current_epoch, l.run_time as last_epoch,
           c.run_time - l.run_time as secs_elapsed,
           c.lsn as current_lsn, l.lsn as last_lsn,
