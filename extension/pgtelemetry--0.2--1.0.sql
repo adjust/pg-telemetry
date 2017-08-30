@@ -16,7 +16,7 @@ begin
 end;
 $$;
 
-create function wal_telemetry() returns table (
+create or replace function wal_telemetry() returns table (
    current_epoch numeric, last_epoch numeric, secs_elapsed numeric,
    current_lsn pg_lsn, last_lsn pg_lsn, bytes_elapsed numeric,
    bytes_per_sec numeric
@@ -36,4 +36,4 @@ select wal_telemetry();
 CREATE VIEW waiting_queries_reason_details AS
 select wait_event_type, wait_event, count(*) from pg_stat_activity
  WHERE wait_event is not null
- GROUP BY wait_event_type, wait_event;`
+ GROUP BY wait_event_type, wait_event;
