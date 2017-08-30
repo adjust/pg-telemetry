@@ -1,0 +1,14 @@
+PGTelemetry Change Log
+
+2017-09-30	1.0	First full stable release
+	* Fixed wal telemetry on slaves
+	* Added lock detail metrics
+
+2017-08-23	0.2	First release on pgxn
+	* Support for PostgreSQL 10 added
+	* Support for wal telemetry on slaves
+
+2017-08-08	0.1	First semi-public release
+	* Basic metrics
+	* Some Zabbix alert scripts
+	* A sample Prometheus postgres_exporter config
