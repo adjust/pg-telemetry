@@ -1,6 +1,6 @@
-default_version = '0.2'
+default_version = '1.0'
 directory = 'extension'
-requires = 'pg_stat_statements'
+requires = 'pg_stat_statements, plpgsql'
 relocatable = 'false'
 superuser = 'true'
 schema = 'pgtelemetry'
