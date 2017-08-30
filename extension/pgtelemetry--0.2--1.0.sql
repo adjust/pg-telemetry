@@ -5,7 +5,7 @@ $$
 declare log_entry pg_telemetry_wal_log;
 begin
     if pg_is_in_recovery() then
-       select * into log_entry from pg_telemetry_wal_log order by current_epoch desc limit 1;
+       select * into log_entry from pg_telemetry_wal_log order by run_time desc limit 1;
     else
        insert into pg_telemetry_wal_log
        select extract('epoch' from now()), now(),
