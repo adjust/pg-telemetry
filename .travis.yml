@@ -9,13 +9,13 @@ matrix:
           - POSTGRESQL=9.4
        install:
            - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-           - sudo service postgresql 9.4 restart
+           - sudo service postgresql restart 9.4
            - sudo apt-get install postgresql-server-dev-9.4
            - sudo make install
      - addons: 
           postgresql: 9.5
        install:
-           - sudo service postgresql 9.5 restart
+           - sudo service postgresql restart  9.5
            - sudo apt-get install postgresql-server-dev-9.5
            - sudo make install
        env:
@@ -24,7 +24,7 @@ matrix:
           postgresql: 9.6
        install:
            - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-           - sudo service postgresql 9.6 restart
+           - sudo service postgresql restart 9.6
            - sudo apt-get install postgresql-server-dev-9.6
            - sudo make install
        env:
@@ -39,7 +39,7 @@ matrix:
            - sudo apt-get install postgresql-server-dev-10
            - sudo sh -c 'echo "port=5432" >> /etc/postgresql/10/main/postgresql.conf'
            - sudo pg_ctlcluster 10 main restart
-           - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
+           - sudo -u postgres psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
            - sudo pg_ctlcluster 10 main restart
            - sudo -u postgres psql  -c "create user travis with superuser";
            - sudo make install
