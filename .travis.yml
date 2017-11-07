@@ -1,20 +1,25 @@
 sudo: required
+dist: trusty
+language: c
 matrix:
    include:
-     #- addons: 
-     #     postgresql: 9.4
-     #  install:
-     #      - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-     #      - sudo service postgresql restart 9.4
-     #      - sudo apt-get install postgresql-server-dev-9.4
-     #      - sudo make install
-     #- addons: 
-     #     postgresql: 9.5
-     #  install:
-     #      - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-     #      - sudo service postgresql restart 9.5
-     #      - sudo apt-get install postgresql-server-dev-9.5
-     #      - sudo make install
+     - addons: 
+          postgresql: 9.4
+       env:
+          - POSTGRESQL=9.4
+       install:
+           - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
+           - sudo service postgresql restart 9.4
+           - sudo apt-get install postgresql-server-dev-9.4
+           - sudo make install
+     - addons: 
+          postgresql: 9.5
+       install:
+           - sudo service postgresql restart  9.5
+           - sudo apt-get install postgresql-server-dev-9.5
+           - sudo make install
+       env:
+          - POSTGRESQL=9.5
      - addons: 
           postgresql: 9.6
        install:
@@ -22,6 +27,8 @@ matrix:
            - sudo service postgresql restart 9.6
            - sudo apt-get install postgresql-server-dev-9.6
            - sudo make install
+       env:
+          - POSTGRESQL=9.6
      - # addons: postgresql: 10
        install:
            - sudo service postgresql stop
@@ -36,10 +43,14 @@ matrix:
            - sudo pg_ctlcluster 10 main restart
            - sudo -u postgres psql  -c "create user travis with superuser";
            - sudo make install
-
-env:
-  - COVERAGE=1 RELEASE_TESTING=1 DB_TESTING=1
+       env:
+          - POSTGRESQL=10
+   allow_failures:
+     - addons: 
+          postgresql: 9.4
+     - addons: 
+          postgresql: 9.5
 script:
   - make installcheck
 after_failure:
-  - cat /home/travis/build/adjust/pg-telemetry/regression.diffs
+  - cat regression.diffs
