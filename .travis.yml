@@ -46,9 +46,10 @@ matrix:
        env:
           - POSTGRESQL=10
    allow_failures:
-       env:
-          - POSTGRESQL=9.4
-          - POSTGRESQL=9.5
+     - addons: 
+          postgresql: 9.4
+     - addons: 
+          postgresql: 9.5
 script:
   - make installcheck
 after_failure:
