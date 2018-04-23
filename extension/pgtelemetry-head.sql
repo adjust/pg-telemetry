@@ -11,7 +11,7 @@ if version() not like 'PostgreSQL 9.%' then
    CREATE FUNCTION pg_current_xlog_location() RETURNS pg_lsn language sql as $$
        select pg_current_wal_lsn();
    $$;
-   CREATE FUNCTION pg_last_xlog_replay_location returns pg_lsn language sql as $$
+   CREATE FUNCTION pg_last_xlog_replay_location() returns pg_lsn language sql as $$
        select pg_last_wal_replay_lsn();
    $$;
 end if;
