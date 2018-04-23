@@ -2238,20 +2238,19 @@ SELECT s.slot_name
 () AS querytime
 ,
         CASE
-            WHEN pg_is_in_recovery
-() THEN pg_last_xlog_replay_location
+            WHEN pg_is_in_recovery()
+() THEN pg_last_xlog_replay_location()
 ()
-            ELSE pg_current_xlog_location
+            ELSE pg_current_xlog_location()
 ()
         END AS pg_current_xlog_location
 ,
         CASE
-            WHEN pg_is_in_recovery
+            WHEN pg_is_in_recovery()
 () THEN 
 (NULL::integer)::numeric
             ELSE 
-(pg_current_xlog_location
-     () - s.restart_lsn
+(pg_current_xlog_location() - s.restart_lsn
 )
         END AS current_lag_bytes
    
