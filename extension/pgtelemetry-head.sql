@@ -353,7 +353,6 @@ create function wal_telemetry() returns table (
    current_lsn pg_lsn, last_lsn pg_lsn, bytes_elapsed numeric,
    bytes_per_sec numeric
 ) language sql as $$
-WITH insert_record AS 
    select c.run_time as current_epoch, l.run_time as last_epoch,
           c.run_time - l.run_time as secs_elapsed,
           c.lsn as current_lsn, l.lsn as last_lsn,
