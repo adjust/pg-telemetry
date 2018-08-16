@@ -151,7 +151,7 @@ select case when wait_event is null then state else 'waiting' end as state,
 CREATE VIEW waiting_queries_reason_details AS
 select wait_event_type, wait_event, count(*) from pg_stat_activity
  WHERE wait_event is not null
- GROUP BY wait_event_type, wait_event;`
+ GROUP BY wait_event_type, wait_event;
 
 
 comment on view connections_by_state is
@@ -405,7 +405,7 @@ we use the last received WAL location instead.  Note that replicas can have
 replication slots for downstream replication tracking.
 $$;
 
-CREATE FUNCTION vacuum_progress() RETURNS table(
+CREATE FUNCTION pgtelemetry.vacuum_progress() RETURNS table(
   datid oid, datname name, schemaname name,
   relname name, phase text, heap_blks_total bigint,
   heap_blks_scanned bigint, heap_blks_vacuumed bigint, index_vacuum_count bigint,
