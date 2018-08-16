@@ -340,8 +340,7 @@ begin
        select * into log_entry from pg_telemetry_wal_log order by current_epoch desc limit 1;
     else
        insert into pg_telemetry_wal_log
-       select extract('epoch' from now()), now(),
-                   pg_current_xlog_location() end as wal_location
+       select extract('epoch' from now()), now(), pg_current_xlog_location() as wal_location
        WHERE NOT is_replica()
        returning * into log_entry;
     end if;
