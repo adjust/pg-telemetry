@@ -51,7 +51,6 @@ See the [pgtelemetry.html](doc/pgtelemetry.html) in the doc folder.
 pg_stats_statements must be installed and preloaded.  Once that is the case, 
 you can use the standard make/make install process to install this extension:
 
-    make
     make install
 
 That copies the files into the PostgreSQL extensions directory.  In some
