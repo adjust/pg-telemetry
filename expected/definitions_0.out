@@ -84,6 +84,12 @@ SELECT count(*) > 0 from pgtelemetry.locks_by_mode;
  t
 (1 row)
 
+select count(*) = 1 from pgtelemetry.lock_queue_size_five_minutes_wait;
+ ?column? 
+----------
+ t
+(1 row)
+
 SELECT count(*) > 0 from pgtelemetry.tuple_access_stats;
  ?column? 
 ----------
@@ -97,14 +103,6 @@ SELECT count(*) > 0 from pgtelemetry.autovacuum_stats;
 (1 row)
 
 SELECT count(*) > 0 from pgtelemetry.statement_query_rows_time;
- ?column? 
-----------
- t
-(1 row)
-
+ERROR:  pg_stat_statements must be loaded via shared_preload_libraries
 SELECT count(*) > 0 from pgtelemetry.statement_query_buffers;
- ?column? 
-----------
- t
-(1 row)
-
+ERROR:  pg_stat_statements must be loaded via shared_preload_libraries

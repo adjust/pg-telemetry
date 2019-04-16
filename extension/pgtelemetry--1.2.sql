@@ -64,18 +64,18 @@ $$;
 -- version compatibility
 do $d$ begin
 if current_setting('server_version_num')::int < 100000 then
-   CREATE OR REPLACE FUNCTION pg_current_xlog_location() RETURNS pg_lsn language sql as $$
+   CREATE FUNCTION pg_current_xlog_location() RETURNS pg_lsn language sql as $$
        select pg_current_wal_lsn();
    $$;
-   CREATE OR REPLACE FUNCTION pg_last_xlog_replay_location() returns pg_lsn language sql as $$
+   CREATE FUNCTION pg_last_xlog_replay_location() returns pg_lsn language sql as $$
        select pg_last_wal_replay_lsn();
    $$;
    -- filter out all non-backend connections
-   create or replace view client_stat_activity as select * from pg_stat_activity where backend_type = 'client backend';
+   create view client_stat_activity as select * from pg_stat_activity where backend_type = 'client backend';
 else
   -- in pre PostgreSQL 10 we only need to filter out autovacuum workers;
   -- however, there is no backend_type field, so we had to rely on the query text.
-   create or replace view client_stat_activity as select * from pg_stat_activity where query not like 'autovacuum:%';
+   create view client_stat_activity as select * from pg_stat_activity where query not like 'autovacuum:%';
 end if;
 end;$d$ language plpgsql;
 
@@ -293,7 +293,7 @@ provides a some opportunities to spot locking problems.
 $$;
 
 -- count client backends waiting on a lock for more than 5 minutes
-create view lock_queue_size_five_minutes_wait as
+create or replace view lock_queue_size_five_minutes_wait as
 select count(1) from pg_locks join client_stat_activity using(pid)
 where granted = 'f' and extract('epoch' from now() - query_start) > 300;
 

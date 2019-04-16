@@ -14,6 +14,7 @@ SELECT count(*) > 0 from pgtelemetry.longest_running_active_queries;
 SELECT count(*) > -1 from pgtelemetry.waiting_connections_by_event_type;
 SELECT count(*) > 0 from pgtelemetry.locks_by_type;
 SELECT count(*) > 0 from pgtelemetry.locks_by_mode;
+select count(*) = 1 from pgtelemetry.lock_queue_size_five_minutes_wait;
 SELECT count(*) > 0 from pgtelemetry.tuple_access_stats;
 SELECT count(*) > 0 from pgtelemetry.autovacuum_stats;
 SELECT count(*) > 0 from pgtelemetry.statement_query_rows_time;
