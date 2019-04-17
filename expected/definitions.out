@@ -1,5 +1,5 @@
 set client_min_messages to warning;
-create extension pgtelemetry cascade;
+create extension if not exists pgtelemetry cascade;
 select count(*) > 0 from pgtelemetry.database_size;
  ?column? 
 ----------
@@ -84,7 +84,7 @@ SELECT count(*) > 0 from pgtelemetry.locks_by_mode;
  t
 (1 row)
 
-select count(*) = 1 from pgtelemetry.lock_queue_size_five_minutes_wait;
+SELECT pgtelemetry.count_waiting_on_locks_more_than_seconds(300) >= 0;
  ?column? 
 ----------
  t

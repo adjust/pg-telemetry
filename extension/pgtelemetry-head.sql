@@ -1,83 +1,8 @@
-create or replace function get_autovacuum_vacuum_info
-(
-      _except regclass[] default null,
-  out queue_depth int8,
-  out total_dead_tup int8
-)
-  returns record
-  language plpgsql stable as
-$fnc$
-begin
-  select
-      count(*),
-      sum(n_dead_tup)
-      into queue_depth, total_dead_tup
-    from
-      pg_class c, --lateral
-        pg_stat_get_dead_tuples(c.oid) n_dead_tup
-    where
-          coalesce(c.oid != any (_except), true)
-      and n_dead_tup >
-          coalesce((select option_value::int4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_vacuum_threshold'), current_setting('autovacuum_vacuum_threshold')::int4)+
-          reltuples*coalesce((select option_value::float4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_vacuum_scale_factor'), current_setting('autovacuum_vacuum_scale_factor')::float4)
-      and not exists (select from pg_options_to_table(reloptions) where option_name = 'autovacuum_enabled' and option_value::bool = false)
-    ;
-    return;
-end;
-$fnc$;
+-- complain if script is sourced in psql, rather than via CREATE EXTENSION
+--\echo Use "CREATE EXTENSION pgtelemetry" to load this file. \quit
 
-create or replace function get_autovacuum_analyze_info
-(
-      _except regclass[] default array['pg_catalog.pg_statistic'],
-  out queue_depth int8,
-  out total_mod_since_analyze int8
-)
-  returns record
-  language plpgsql stable as
-$fnc$
-begin
-  select
-      count(*),
-      sum(n_mod_since_analyze)
-      into queue_depth, total_mod_since_analyze
-    from
-      pg_class c,
-        pg_stat_get_mod_since_analyze(c.oid) n_mod_since_analyze
-    where
-          c.relnamespace != 'pg_toast'::regnamespace
-      and coalesce(c.oid != any (_except), true)
-      and n_mod_since_analyze >
-          coalesce((select option_value::int4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_analyze_threshold'), current_setting('autovacuum_analyze_threshold')::int4)+
-            reltuples*coalesce((select option_value::float4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_analyze_scale_factor'), current_setting('autovacuum_analyze_scale_factor')::float4)
-      and not exists (select from pg_options_to_table(reloptions) where option_name = 'autovacuum_enabled' and option_value::bool = false)
-    ;
-    return;
-end;
-$fnc$;
-
--- cheating but needed to make plans safe on replicas.
-create function is_replica() returns bool language sql IMMUTABLE
-AS $$
-  select pg_is_in_recovery();
-$$;
-
--- version compatibility
-do $d$ begin
-if current_setting('server_version_num')::int < 100000 then
-   CREATE OR REPLACE FUNCTION pg_current_xlog_location() RETURNS pg_lsn language sql as $$
-       select pg_current_wal_lsn();
-   $$;
-   CREATE OR REPLACE FUNCTION pg_last_xlog_replay_location() returns pg_lsn language sql as $$
-       select pg_last_wal_replay_lsn();
-   $$;
-   -- filter out all non-backend connections
-   create or replace view client_stat_activity as select * from pg_stat_activity where backend_type = 'client backend';
-else
-  -- in pre PostgreSQL 10 we only need to filter out autovacuum workers;
-  -- however, there is no backend_type field, so we had to rely on the query text.
-   create or replace view client_stat_activity as select * from pg_stat_activity where query not like 'autovacuum:%';
-end if;
-end;$d$ language plpgsql;
+-- filter non-backend connections from pg_stat_activity
+create view client_stat_activity as select * from pg_stat_activity where backend_type = 'client backend';
 
 -- disk space
 CREATE VIEW relation_total_size AS
@@ -226,7 +151,7 @@ $$;
 -- connections by ip address source
 
 CREATE VIEW connections_by_ip_source as
-SELECT client_addr, count(*) from client_stat_activity
+SELECT client_addr, count(*) from  @extschema@.client_stat_activity
  GROUP BY client_addr;
 
 comment on view connections_by_ip_source is
@@ -292,16 +217,24 @@ vs exclusive for example).  Combined with the locks_by_type view, this view
 provides a some opportunities to spot locking problems.
 $$;
 
--- count client backends waiting on a lock for more than 5 minutes
-create view lock_queue_size_five_minutes_wait as
-select count(1) from pg_locks join client_stat_activity using(pid)
-where granted = 'f' and extract('epoch' from now() - query_start) > 300;
+-- count client backends waiting on a lock for more than given number of seconds
+create or replace function count_waiting_on_locks_more_than_seconds(int default 300)
+returns bigint
+as
+$$
+select count(1)
+ from pg_locks
+ join  @extschema@.client_stat_activity using(pid)
+where granted = 'f' and
+      extract('epoch' from now() - query_start) > $1;
+$$ language sql;
 
-comment on view lock_queue_size_five_minutes_wait is
+comment on function count_waiting_on_locks_more_than_seconds is
 $$
-This view provides the number of client backend processes waiting on a lock
-for more than 5 minutes. Can be used to spot locking conflicts.
-$$
+This function provides the number of client backend processes waiting on a lock
+for more than given number of seconds (5 minutes if not supplied). Can be used to spot
+locking conflicts.
+$$;
 
 
 CREATE VIEW tuple_access_stats AS
@@ -408,12 +341,12 @@ returns pg_telemetry_wal_log language plpgsql as
 $$
 declare log_entry pg_telemetry_wal_log;
 begin
-    if is_replica() then
+    if pg_is_in_recovery() then
        select * into log_entry from pg_telemetry_wal_log order by run_time desc limit 1;
     else
        insert into pg_telemetry_wal_log
        select extract('epoch' from now()), now(),
-                   pg_current_xlog_location() as wal_location
+                   pg_current_wal_lsn() as wal_location
        returning * into log_entry;
     end if;
     return log_entry;
@@ -455,12 +388,12 @@ $$;
 
 CREATE OR REPLACE VIEW replication_slot_lag as
 SELECT slot_name, slot_type, active, restart_lsn, to_jsonb(s) as full_data,
-       now() as querytime, CASE WHEN is_replica()
-                                THEN pg_last_xlog_replay_location()
-                                ELSE pg_current_xlog_location() END
-                           AS pg_current_xlog_location,
-       CASE WHEN is_replica() THEN null::int
-            ELSE pg_current_xlog_location() - restart_lsn END
+       now() as querytime, CASE WHEN pg_is_in_recovery()
+                                THEN pg_last_wal_replay_lsn()
+                                ELSE pg_current_wal_lsn() END
+                           AS pg_current_wal_lsn,
+       CASE WHEN pg_is_in_recovery() THEN null::int
+            ELSE pg_current_wal_lsn() - restart_lsn END
        AS current_lag_bytes
   FROM pg_replication_slots s
  ORDER BY s.slot_name;
@@ -474,3 +407,60 @@ For master database, the current wal location is self-explanatory.  For replicas
 we use the last received WAL location instead.  Note that replicas can have
 replication slots for downstream replication tracking.
 $$;
+
+create or replace function get_autovacuum_vacuum_info
+(
+      _except regclass[] default null,
+  out queue_depth int8,
+  out total_dead_tup int8
+)
+  returns record
+  language plpgsql stable as
+$fnc$
+begin
+  select
+      count(*),
+      sum(n_dead_tup)
+      into queue_depth, total_dead_tup
+    from
+      pg_class c, --lateral
+        pg_stat_get_dead_tuples(c.oid) n_dead_tup
+    where
+          coalesce(c.oid != any (_except), true)
+      and n_dead_tup >
+          coalesce((select option_value::int4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_vacuum_threshold'), current_setting('autovacuum_vacuum_threshold')::int4)+
+          reltuples*coalesce((select option_value::float4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_vacuum_scale_factor'), current_setting('autovacuum_vacuum_scale_factor')::float4)
+      and not exists (select from pg_options_to_table(reloptions) where option_name = 'autovacuum_enabled' and option_value::bool = false)
+    ;
+    return;
+end;
+$fnc$;
+
+create or replace function get_autovacuum_analyze_info
+(
+      _except regclass[] default array['pg_catalog.pg_statistic'],
+  out queue_depth int8,
+  out total_mod_since_analyze int8
+)
+  returns record
+  language plpgsql stable as
+$fnc$
+begin
+  select
+      count(*),
+      sum(n_mod_since_analyze)
+      into queue_depth, total_mod_since_analyze
+    from
+      pg_class c,
+        pg_stat_get_mod_since_analyze(c.oid) n_mod_since_analyze
+    where
+          c.relnamespace != 'pg_toast'::regnamespace
+      and coalesce(c.oid != any (_except), true)
+      and n_mod_since_analyze >
+          coalesce((select option_value::int4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_analyze_threshold'), current_setting('autovacuum_analyze_threshold')::int4)+
+            reltuples*coalesce((select option_value::float4 from pg_options_to_table(reloptions) where option_name = 'autovacuum_analyze_scale_factor'), current_setting('autovacuum_analyze_scale_factor')::float4)
+      and not exists (select from pg_options_to_table(reloptions) where option_name = 'autovacuum_enabled' and option_value::bool = false)
+    ;
+    return;
+end;
+$fnc$;
