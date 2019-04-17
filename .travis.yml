@@ -20,10 +20,11 @@ matrix:
        env:
           - POSTGRESQL=11
           - PGPORT=5433
-install:
-   - sudo make install
+before_install:
    - psql -c 'ALTER SYSTEM set SHARED_PRELOAD_LIBRARIES to pg_stat_statements'
-   - sudo service postgresql restart $POSTGRESQL
+   - sudo systemctl restart postgresql@${POSTGRESQL}-main
+install:
+  - sudo make install
 script:
   - make installcheck
 after_failure:
