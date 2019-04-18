@@ -391,7 +391,7 @@ SELECT slot_name, slot_type, active, restart_lsn, to_jsonb(s) as full_data,
        now() as querytime, CASE WHEN pg_is_in_recovery()
                                 THEN pg_last_wal_replay_lsn()
                                 ELSE pg_current_wal_lsn() END
-                           AS pg_current_wal_lsn,
+                           AS pg_current_xlog_location,
        CASE WHEN pg_is_in_recovery() THEN null::int
             ELSE pg_current_wal_lsn() - restart_lsn END
        AS current_lag_bytes
