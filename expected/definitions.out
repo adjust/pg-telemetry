@@ -84,6 +84,12 @@ SELECT count(*) > 0 from pgtelemetry.locks_by_mode;
  t
 (1 row)
 
+SELECT pgtelemetry.count_waiting_on_locks_more_than_seconds(300) >= 0;
+ ?column? 
+----------
+ t
+(1 row)
+
 SELECT count(*) > 0 from pgtelemetry.tuple_access_stats;
  ?column? 
 ----------

@@ -151,7 +151,12 @@ $$;
 -- connections by ip address source
 
 CREATE VIEW connections_by_ip_source as
-SELECT client_addr, count(*) from  @extschema@.client_stat_activity
+SELECT client_addr,
+       count(*) as count,
+       count(*) filter(where state = 'active') as active_count,
+       count(*) filter(where state = 'idle in transaction' or state = 'idle in transaction (aborted)') as idle_in_transaction_count,
+       count(*) filter(where state = 'idle') as idle_count
+       from  @extschema@.client_stat_activity
  GROUP BY client_addr;
 
 comment on view connections_by_ip_source is
