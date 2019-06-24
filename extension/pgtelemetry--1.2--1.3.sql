@@ -1,4 +1,4 @@
-create or replace function vacuum_progress()
+create or replace function @extschema@.vacuum_progress()
   returns table
   (
     datname               name,
