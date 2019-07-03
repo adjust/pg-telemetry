@@ -528,8 +528,8 @@ insert into @extschema@.long_running_query_rules(priority, application_name_ilik
   values
   (0, 'pg\_dump', null, null, interval'6 hours'), -- pg_dump 6 hours
   (0, 'pg2ch', null, null, interval'3 hours'), -- pg2ch 3 hours
-  (100, null, null, 'idle in transaction', interval'5 minutes'); -- any idle transaction 5 minutes
-  (100, null, null, 'idle in transaction (aborted)', interval'5 minutes'); -- same as above, except one of the statements in the transaction caused an error
+  (100, null, null, 'idle in transaction', interval'5 minutes'), -- any idle transaction 5 minutes
+  (100, null, null, 'idle in transaction (aborted)', interval'5 minutes'), -- same as above, except one of the statements in the transaction caused an error
   (1000, null, null, null, interval'1 hour'); -- anything else 1 hour
 
 
