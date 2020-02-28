@@ -5,7 +5,8 @@ set
 where
     application_name_ilike = 'pg\_dump';
 
-create or replace view @extschema@.long_running_queries
+drop view @extschema@.long_running_queries; -- cannot change the view column name during create or replace.
+create view @extschema@.long_running_queries
 (
     current_state_duration,
     query_duration,
