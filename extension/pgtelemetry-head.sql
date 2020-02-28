@@ -551,7 +551,7 @@ create or replace view @extschema@.long_running_queries
 ) as
 select
         now() - coalesce(p.state_change, p.query_start) as duration,
-        now() - p.query_start as query_duration
+        now() - p.query_start as query_duration,
         p.pid,
         pg_is_in_recovery() as is_slave,
         p.application_name,
