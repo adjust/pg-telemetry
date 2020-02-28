@@ -1,7 +1,7 @@
 {
    "name": "pgtelemetry",
    "abstract": "Useful monitoring and metrics views for PostgreSQL",
-   "version": "1.0.0",
+   "version": "1.4.0",
    "maintainer": [ "Chris Travers <christravers@adjust.com>" ],
    "license": {
       "PostgreSQL": "http://www.postgresql.org/about/licence"
@@ -10,7 +10,7 @@
       "pgtelemetry": {
          "file": "extension/pgtelemetry-HEAD.sql",
          "docfile": "doc/pgtelemetry.html",
-         "version": "1.0.0",
+         "version": "1.4.0",
          "abstract": "Useful monitoring and metrics for PostgreSQL"
       }
    },
