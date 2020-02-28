@@ -535,7 +535,7 @@ insert into @extschema@.long_running_query_rules(priority, application_name_ilik
 
 create or replace view @extschema@.long_running_queries
 (
-    duration,
+    current_state_duration,
     query_duration,
     pid,
     is_slave,
@@ -550,7 +550,7 @@ create or replace view @extschema@.long_running_queries
     query
 ) as
 select
-        now() - coalesce(p.state_change, p.query_start) as duration,
+        now() - p.state_change as current_state_duration,
         now() - p.query_start as query_duration,
         p.pid,
         pg_is_in_recovery() as is_slave,
@@ -586,4 +586,4 @@ select
         and backend_type = 'client backend'
         and ((l.state is NOT NULL and age(now(), state_change) > l.alert_threshold)
           or (l.state is NULL and age(now(), query_start) > l.alert_threshold))
-    order by duration desc;
+    order by current_state_duration desc;
