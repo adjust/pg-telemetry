@@ -1,5 +1,10 @@
 PGTelemetry Change Log
 
+2020-02-28 1.4.b Improve the long-running queries report
+	* Make sure the report contains both query and current state duration.
+	* Count running in the current state, as opposed to the total query time, if state is listed in the rules.
+	* Use a prefix match for pg_dump, as some distros prepend a version to it (i.e. pg_dump11).
+
 2017-09-30	1.0	First full stable release
 	* Fixed wal telemetry on slaves
 	* Added lock detail metrics

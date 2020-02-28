@@ -11,17 +11,17 @@ agents, Zabbix agents, and other monitoring programs with data.
 
 ## Intended Usage
 
-The module is intended to be used with monitoring and visualizaiton 
+The module is intended to be used with monitoring and visualizaiton
 programs such as pganalyze, zabbix, and munin.  These tend to use an agent
-which collects performance data and sends it to a server for graphics 
+which collects performance data and sends it to a server for graphics
 generation.  Some of the functions here are wrapped in views.
 
-A second class of functions are in place for administrators to use in 
+A second class of functions are in place for administrators to use in
 troubleshooting and debugging performance issues.  However these are to be
 used as needed while the general stats functions are assumed to be run
 every few min at least.
 
-We expect this extension usually to be installed in its own schema.  
+We expect this extension usually to be installed in its own schema.
 However, it can be safely installed anywhere its names don't conflict
 with anything else.
 
@@ -36,9 +36,8 @@ In the initial phase, there are several areas of focus for this project:
 
 ## Requirements
 
-Currently this is expected to require PostgreSQL 9.6 and PostgreSQL 10 will be 
-added in the near future.  However support for PostgreSQL instances before 9.6
-is an area of interest and may be added anyway.
+Currently this is expected to require PostgreSQL 9.6+. However support for
+PostgreSQL instances before 9.6 is an area of interest and may be added anyway.
 
 This module also requires that pg_stat_statements is installed.
 
@@ -48,7 +47,7 @@ See the [pgtelemetry.html](doc/pgtelemetry.html) in the doc folder.
 
 ## Installation
 
-pg_stats_statements must be installed and preloaded.  Once that is the case, 
+pg_stats_statements must be installed and preloaded.  Once that is the case,
 you can use the standard make/make install process to install this extension:
 
     make install
@@ -77,7 +76,7 @@ master databasess
 extras/zabbix:
 
    * checkTablespaceSize.pl raises an alarm if any tablespace is too big
-   * checkNoLongRunningQueries.pl raises an alarm if queries have been 
+   * checkNoLongRunningQueries.pl raises an alarm if queries have been
      running too long.
    * checkWaitingQueries.pl raises an alarm if too many queries are
      waiting on locks and latches.
@@ -85,4 +84,4 @@ extras/zabbix:
      high (checks downstream).
 
 What is too big?  To high?  Too long?  These are set in the beginning
-of the scripts making this easy to integrate with Zabbix. 
+of the scripts making this easy to integrate with Zabbix.
