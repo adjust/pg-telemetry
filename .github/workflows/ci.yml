@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: ['*']
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        pg: [13, 12, 11, 10]
+    name: PostgreSQL ${{ matrix.pg }}
+    runs-on: ubuntu-latest
+    container: zilder/pg-ext-check
+    steps:
+      - run: pg-setup ${{ matrix.pg }}
+
+      # Preload pg_stat_statements as it is required by the test
+      - run: echo 'shared_preload_libraries=pg_stat_statements' \
+          >> /etc/postgresql/${{ matrix.pg }}/test/postgresql.conf
+      - run: pg_ctlcluster ${{ matrix.pg }} test restart
+
+      - uses: actions/checkout@v2
+      - run: build-check
