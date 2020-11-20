@@ -36,8 +36,7 @@ In the initial phase, there are several areas of focus for this project:
 
 ## Requirements
 
-Currently this is expected to require PostgreSQL 9.6+. However support for
-PostgreSQL instances before 9.6 is an area of interest and may be added anyway.
+Currently this is expected to require PostgreSQL 10+.
 
 This module also requires that pg_stat_statements is installed.
 
