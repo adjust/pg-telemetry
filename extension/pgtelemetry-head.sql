@@ -587,3 +587,25 @@ select
         and ((l.state is NOT NULL and age(now(), state_change) > l.alert_threshold)
           or (l.state is NULL and age(now(), query_start) > l.alert_threshold))
     order by current_state_duration desc;
+
+create or replace function @extschema@.reshard_issues() returns integer language plpgsql as
+$$
+declare
+    issues integer := 0;
+begin
+    if exists (
+            select
+                1
+            from
+                pg_class cl
+                join pg_namespace nsp on (cl.relnamespace = nsp.oid)
+            where
+                cl.relname = 'unresolved2pc'
+                and nsp.nspname = 'maintenance'
+                and cl.relkind = 'r')
+    then
+        select count(1) into issues from unresolved2pc.maintenance;
+    end if;
+    return issues;
+end;
+$$;
