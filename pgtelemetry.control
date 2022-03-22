@@ -1,4 +1,4 @@
-default_version = '1.4b'
+default_version = '1.5'
 directory = 'extension'
 requires = 'pg_stat_statements, plpgsql'
 relocatable = 'false'
