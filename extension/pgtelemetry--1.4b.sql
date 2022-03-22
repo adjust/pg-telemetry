@@ -285,12 +285,29 @@ $$;
 
 -- call, time, rows
 
-CREATE VIEW statement_query_rows_time AS
-SELECT datname, queryid, query, sum(calls) as calls,
-       sum(total_time) as total_time, sum(rows) as rows
-  FROM pg_stat_statements
-  JOIN pg_database d ON d.oid = dbid
- GROUP BY datname, queryid, query;
+DO $$
+DECLARE pg_version int;
+BEGIN
+    pg_version := pg_catalog.current_setting('server_version_num')::int;
+
+    IF pg_version < 130000 THEN
+
+        CREATE VIEW statement_query_rows_time AS
+        SELECT datname, queryid, query, sum(calls) as calls,
+            sum(total_time) as total_time, sum(rows) as rows
+        FROM pg_stat_statements
+        JOIN pg_database d ON d.oid = dbid
+        GROUP BY datname, queryid, query;
+    ELSE
+        CREATE VIEW statement_query_rows_time AS
+        SELECT datname, queryid, query, sum(calls) as calls,
+            sum(total_exec_time) as total_time, sum(rows) as rows
+        FROM pg_stat_statements
+        JOIN pg_database d ON d.oid = dbid
+        GROUP BY datname, queryid, query;
+    END IF;
+END;
+$$;
 
 comment on view statement_query_rows_time is
 $$

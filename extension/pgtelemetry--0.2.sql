@@ -5,7 +5,7 @@ AS $$
   select pg_is_in_recovery();
 $$;
 
-       
+
 -- 9.6-compatibility for PostgreSQL 10 and above
 do $d$ begin
 if version() not like 'PostgreSQL 9.%' then
@@ -27,7 +27,7 @@ select c.oid, c.oid::regclass as relation, pg_total_relation_size(c.oid) as incl
        pg_size_pretty(pg_relation_size(c.oid)) as exclusive_size
   from pg_class c
   join pg_namespace n ON c.relnamespace = n.oid
- WHERE relkind = 'r' 
+ WHERE relkind = 'r'
        and n.nspname not in ('pg_toast', 'pg_catalog', 'information_schema');
 
 COMMENT ON VIEW relation_total_size IS
@@ -35,7 +35,7 @@ $$
 This view provides basic information on relation size.  Catalogs and tables
 in the information schema are exclused, as are TOAST tables.
 
-The inclusive metrics show the relation along with indexes and TOAST.  The 
+The inclusive metrics show the relation along with indexes and TOAST.  The
 exclusiove metrics show without these things.  The bytes metrics are intended
 for graph drawing, while the sizes are there for administrators who want to
 quickly query this information and make decisions.
@@ -56,7 +56,7 @@ $$
 This view provides basic information on relation size in PostgreSQL system
 tables (those in pg_catalog and information_schema).
 
-The inclusive metrics show the relation along with indexes and TOAST.  The 
+The inclusive metrics show the relation along with indexes and TOAST.  The
 exclusiove metrics show without these things.  The bytes metrics are intended
 for graph drawing, while the sizes are there for administrators who want to
 quickly query this information and make decisions.
@@ -70,10 +70,10 @@ select c.oid, c.oid::regclass as index,
        pg_size_pretty(pg_relation_size(c.oid)) as size
   from pg_class c
   join pg_namespace n ON c.relnamespace = n.oid
- WHERE relkind = 'i' 
+ WHERE relkind = 'i'
        and n.nspname not in ('pg_toast', 'pg_catalog', 'information_schema');
 
-COMMENT ON VIEW index_size IS 
+COMMENT ON VIEW index_size IS
 $$
 This table is most useful in tracking down questions of bloat, fill factor, and
 performance of GIN indexes among other things.
@@ -91,20 +91,20 @@ select c.oid, c.oid::regclass as relation,
 
 COMMENT ON VIEW relation_toast_size IS
 $$
-This measures the amount of space in a relation's TOAST tables.  These are 
+This measures the amount of space in a relation's TOAST tables.  These are
 populated when data exceeds what can be reasonably stored inline in the main
 heap pages.  You would expect to see this non-zero where you have large fields
 being stored, particularly arrays of composite types.
 
 Performance-wise moving data to TOAST improves sequential scans where the data
-is not required (count(*) for example) at the cost of making the data that has 
+is not required (count(*) for example) at the cost of making the data that has
 been moved far more expensive to retrieve and process.
 $$;
 
 -- tablespaces size
 
 CREATE VIEW tablespace_size AS
-select spcname as name, pg_tablespace_size(oid) as bytes, 
+select spcname as name, pg_tablespace_size(oid) as bytes,
        pg_size_pretty(pg_tablespace_size(oid)) as size
   from pg_tablespace;
 
@@ -112,7 +112,7 @@ COMMENT ON VIEW tablespace_size IS
 $$
 This provides database-cluster-wide statistics on disk usage by tablespace.
 
-Note that tablespaces and databases are orthogonal.  Typically if you are 
+Note that tablespaces and databases are orthogonal.  Typically if you are
 running out of disk space, you want to check this one first, then database_size
 and then the size of the relations in the largest database in that order.
 $$;
@@ -146,13 +146,13 @@ $$;
 
 CREATE VIEW connections_by_state AS
 select case when wait_event is null then state else 'waiting' end as state,
-       count(*) 
+       count(*)
   from pg_stat_activity group by 1;
 
 
 comment on view connections_by_state is
 $$
-This gives you the number of connections (cluster-wide) by state (active, idle, 
+This gives you the number of connections (cluster-wide) by state (active, idle,
 idle in transaction, etc).  If the query is active but is waiting on a lock or
 latch, we change this to 'waiting.'
 $$;
@@ -175,7 +175,7 @@ $$;
 -- longest-running active queries
 
 CREATE VIEW longest_running_active_queries AS
-select application_name, state, wait_event_type, wait_event, query, pid, 
+select application_name, state, wait_event_type, wait_event, query, pid,
        client_addr,
        age(now(), query_start) as running_for
   from pg_stat_activity where state = 'active'
@@ -217,22 +217,22 @@ $$;
 
 -- locks by mode
 CREATE VIEW locks_by_mode AS
-SELECT mode, count(*) from pg_locks 
+SELECT mode, count(*) from pg_locks
  GROUP BY mode;
 
 COMMENT ON view locks_by_mode is
 $$
 This view provides cluster-wide statistics on locks by lock mode (access share
-vs exclusive for example).  Combined with the locks_by_type view, this view 
+vs exclusive for example).  Combined with the locks_by_type view, this view
 provides a some opportunities to spot locking problems.
 $$;
 
 
 CREATE VIEW tuple_access_stats AS
-select schemaname, relname, 
-       seq_scan, seq_tup_read, 
-       idx_scan, idx_tup_fetch, 
-       n_tup_ins, n_tup_upd, n_tup_del, n_tup_hot_upd, n_live_tup, n_dead_tup, 
+select schemaname, relname,
+       seq_scan, seq_tup_read,
+       idx_scan, idx_tup_fetch,
+       n_tup_ins, n_tup_upd, n_tup_del, n_tup_hot_upd, n_live_tup, n_dead_tup,
        n_mod_since_analyze
   FROM pg_stat_user_tables;
 
@@ -246,24 +246,24 @@ $$;
 
 -- autovacuum stats
 CREATE VIEW autovacuum_stats AS
-select schemaname, relname, 
-       last_vacuum, 
+select schemaname, relname,
+       last_vacuum,
        extract (epoch from age(now(), last_vacuum)) as age_last_vacuum,
        vacuum_count,
-       last_autovacuum, 
+       last_autovacuum,
        extract (epoch from age(now(), last_autovacuum)) as age_last_autovacuum,
        autovacuum_count,
-       last_analyze, 
+       last_analyze,
        extract (epoch from age(now(), last_analyze)) as age_last_analyze,
        analyze_count,
-       last_autoanalyze, 
+       last_autoanalyze,
        extract (epoch from age(now(), last_autoanalyze)) as age_last_autoanalyze,
        autoanalyze_count
   FROM pg_stat_user_tables;
 
 comment on view autovacuum_stats is
 $$
-This provides basic metrics per table in the current database for when 
+This provides basic metrics per table in the current database for when
 autovacuum and analyze were last run (as well as manual maintenance).
 $$;
 
@@ -271,12 +271,29 @@ $$;
 
 -- call, time, rows
 
-CREATE VIEW statement_query_rows_time AS
-SELECT datname, queryid, query, sum(calls) as calls, 
-       sum(total_time) as total_time, sum(rows) as rows
-  FROM pg_stat_statements
-  JOIN pg_database d ON d.oid = dbid
- GROUP BY datname, queryid, query;
+DO $$
+DECLARE pg_version int;
+BEGIN
+    pg_version := pg_catalog.current_setting('server_version_num')::int;
+
+    IF pg_version < 130000 THEN
+
+        CREATE VIEW statement_query_rows_time AS
+        SELECT datname, queryid, query, sum(calls) as calls,
+            sum(total_time) as total_time, sum(rows) as rows
+        FROM pg_stat_statements
+        JOIN pg_database d ON d.oid = dbid
+        GROUP BY datname, queryid, query;
+    ELSE
+        CREATE VIEW statement_query_rows_time AS
+        SELECT datname, queryid, query, sum(calls) as calls,
+            sum(total_exec_time) as total_time, sum(rows) as rows
+        FROM pg_stat_statements
+        JOIN pg_database d ON d.oid = dbid
+        GROUP BY datname, queryid, query;
+    END IF;
+END;
+$$;
 
 comment on view statement_query_rows_time is
 $$
@@ -286,11 +303,11 @@ statistics.
 $$;
 
 -- buffers
-CREATE VIEW statement_query_buffers AS 
-SELECT datname, queryid, query, sum(calls), 
+CREATE VIEW statement_query_buffers AS
+SELECT datname, queryid, query, sum(calls),
        sum(shared_blks_hit) as shared_blks_hit,
-       sum(shared_blks_read) as shared_blks_read, 
-       sum(shared_blks_dirtied) as shared_blks_dirtied, 
+       sum(shared_blks_read) as shared_blks_read,
+       sum(shared_blks_dirtied) as shared_blks_dirtied,
        sum(shared_blks_written) as shared_blks_written,
        sum(temp_blks_read) as tmp_blkd_read,
        sum(temp_blks_written) as tmp_blkd_written
@@ -387,10 +404,10 @@ SELECT slot_name, slot_type, active, restart_lsn, to_jsonb(s) as full_data,
 
 COMMENT ON VIEW replication_slot_lag IS
 $$
-This view monitors lag on downstream slots.  It compares the last sent wal 
+This view monitors lag on downstream slots.  It compares the last sent wal
 segment to the current known wal location.
 
 For master database, the current wal location is self-explanatory.  For replicas
-we use the last received WAL location instead.  Note that replicas can have 
+we use the last received WAL location instead.  Note that replicas can have
 replication slots for downstream replication tracking.
 $$;
