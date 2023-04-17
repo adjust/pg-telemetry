@@ -114,3 +114,39 @@ SELECT count(*) > 0 from pgtelemetry.statement_query_buffers;
  t
 (1 row)
 
+SELECT count(*) > 0 from pgtelemetry.wal_telemetry();
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT count(*) > 0 from pgtelemetry.replication_slot_lag;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT count(*) > 0 from pgtelemetry.get_autovacuum_vacuum_info();
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT count(*) > 0 from pgtelemetry.get_autovacuum_analyze_info();
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT count(*) > 0 from pgtelemetry.vacuum_progress();
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT count(*) > 0 from pgtelemetry.long_running_queries;
+ ?column? 
+----------
+ f
+(1 row)
+
