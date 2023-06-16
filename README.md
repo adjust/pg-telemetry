@@ -1,3 +1,6 @@
+[![TEST](https://github.com/adjust/pg-telemetry/actions/workflows/test.yml/badge.svg)](https://github.com/adjust/pg-telemetry/actions/workflows/test.yml)
+
+
 # pg_telemetry, an extension for getting usage states from PostgreSQL
 
 Welcome to pg_telemetry, an extension for monitoring usage of PostgreSQL.
