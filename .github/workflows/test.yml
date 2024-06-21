@@ -33,7 +33,7 @@ jobs:
         # also test 'latest', eventually this will be upgraded to a newer version and might fail early
         #os: [ubuntu-18.04, ubuntu-20.04, ubuntu-latest]
         os: [ubuntu-latest]
-        postgresql: [11, 12, 14, 15, 16]
+        postgresql: [16, 15, 14, 13, 12, 11, 10]
 
     steps:
       - name: Checkout code
