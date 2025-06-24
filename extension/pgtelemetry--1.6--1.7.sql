@@ -1,5 +1,6 @@
 -- Migration script from 1.6 to 1.7
 -- Adds PG17-compatible version of vacuum_progress()
+DROP FUNCTION IF EXISTS @extschema@.vacuum_progress();
 
 CREATE OR REPLACE FUNCTION pgtelemetry.vacuum_progress()
 RETURNS TABLE (
